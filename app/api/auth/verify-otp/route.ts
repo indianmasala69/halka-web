@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
           phone: '', // Empty for email-only auth
           created_at: new Date(),
           updated_at: new Date(),
-        });
+        } as any);
 
       if (createError) {
         console.error('Error creating user profile:', createError);
