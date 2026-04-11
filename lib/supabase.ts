@@ -76,7 +76,7 @@ export const db = {
       .insert({
         user_id: userId,
         ...answers,
-      })
+      } as any)
       .select()
       .single();
     return { data, error };

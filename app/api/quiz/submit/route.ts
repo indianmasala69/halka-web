@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         diet_preference: answers.diet,
         commitment_level: answers.commitment,
         created_at: new Date(),
-      })
+      } as any)
       .select()
       .single();
 
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         recommended_program: recommendedProgram,
         created_at: new Date(),
         updated_at: new Date(),
-      });
+      } as any);
 
     if (healthError) {
       console.error('Error saving health profile:', healthError);

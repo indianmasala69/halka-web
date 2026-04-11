@@ -40,7 +40,7 @@ export default function VerifyPage() {
               phone: '',
               created_at: new Date(),
               updated_at: new Date(),
-            });
+            } as any);
 
           if (createError) {
             console.error('Error creating user profile:', createError);
