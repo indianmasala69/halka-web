@@ -227,7 +227,7 @@ export default function DashboardPage() {
               }}>
                 {health.bmi}
               </div>
-              <p style{{ fontSize: '13px', color: C.textMuted }}>
+              <p style={{ fontSize: '13px', color: C.textMuted }}>
                 Your current BMI category
               </p>
             </div>
