@@ -3,39 +3,38 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
-    const { phone } = await request.json();
+    const { email } = await request.json();
 
-    // Validate phone
-    if (!phone || phone.length < 10) {
+    // Validate email
+    if (!email || !email.includes('@')) {
       return NextResponse.json(
-        { error: 'Invalid phone number' },
+        { error: 'Invalid email address' },
         { status: 400 }
       );
     }
 
-    // Format phone number (ensure it starts with +91 for India)
-    const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
-
-    // Call Supabase Auth to send OTP
-    const { data, error } = await supabase.auth.signInWithOtp({
-      phone: formattedPhone,
+    // Call Supabase Auth to send email OTP/magic link
+    const { error } = await supabase.auth.signInWithOtp({
+      email: email,
+      options: {
+        shouldCreateUser: true,
+      },
     });
 
     if (error) {
-      console.error('Supabase OTP error:', error);
+      console.error('Supabase email OTP error:', error);
       return NextResponse.json(
-        { error: error.message || 'Failed to send OTP' },
+        { error: error.message || 'Failed to send email' },
         { status: 400 }
       );
     }
 
     return NextResponse.json({
       success: true,
-      message: 'OTP sent successfully',
-      sessionId: data?.session?.id,
+      message: 'Check your email for the login link',
     });
   } catch (error) {
-    console.error('Send OTP error:', error);
+    console.error('Send email OTP error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
