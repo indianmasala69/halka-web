@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
         created_at: new Date(),
       } as any)
       .select()
-      .single();
+      .single() as any;
 
     if (quizError) {
       console.error('Error saving quiz response:', quizError);

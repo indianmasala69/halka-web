@@ -55,7 +55,7 @@ export default function DashboardPage() {
           .from('user_profiles')
           .select('*')
           .eq('id', userId)
-          .single();
+          .single() as any;
 
         if (profileData) {
           setUser(profileData);
@@ -68,7 +68,7 @@ export default function DashboardPage() {
           .eq('user_id', userId)
           .order('created_at', { ascending: false })
           .limit(1)
-          .single();
+          .single() as any;
 
         if (quizData) {
           setQuiz(quizData);

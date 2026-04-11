@@ -56,7 +56,7 @@ export const db = {
       .from("user_profiles")
       .select("*")
       .eq("id", userId)
-      .single();
+      .single() as any;
     return { data, error };
   },
 
@@ -66,7 +66,7 @@ export const db = {
       .update(updates)
       .eq("id", userId)
       .select()
-      .single();
+      .single() as any;
     return { data, error };
   },
 
@@ -89,7 +89,7 @@ export const db = {
       .eq("user_id", userId)
       .order("created_at", { ascending: false })
       .limit(1)
-      .single();
+      .single() as any;
     return { data, error };
   },
 };
