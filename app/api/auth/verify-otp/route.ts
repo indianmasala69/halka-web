@@ -3,30 +3,27 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
-    const { phone, otp } = await request.json();
+    const { email, code } = await request.json();
 
     // Validate inputs
-    if (!phone || !otp || otp.length !== 6) {
+    if (!email || !code) {
       return NextResponse.json(
-        { error: 'Invalid phone or OTP' },
+        { error: 'Invalid email or code' },
         { status: 400 }
       );
     }
 
-    // Format phone number
-    const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
-
-    // Verify OTP with Supabase Auth
+    // Verify email OTP/magic link with Supabase Auth
     const { data, error } = await supabase.auth.verifyOtp({
-      phone: formattedPhone,
-      token: otp,
-      type: 'sms',
+      email: email,
+      token: code,
+      type: 'email',
     });
 
     if (error || !data.user) {
-      console.error('Supabase OTP verification error:', error);
+      console.error('Supabase email OTP verification error:', error);
       return NextResponse.json(
-        { error: error?.message || 'Invalid OTP' },
+        { error: error?.message || 'Invalid or expired code' },
         { status: 400 }
       );
     }
@@ -46,32 +43,29 @@ export async function POST(request: NextRequest) {
         .from('user_profiles')
         .insert({
           id: userId,
-          phone: formattedPhone,
+          phone: '', // Empty for email-only auth
           created_at: new Date(),
           updated_at: new Date(),
         });
 
       if (createError) {
         console.error('Error creating user profile:', createError);
-        return NextResponse.json(
-          { error: 'Failed to create user profile' },
-          { status: 500 }
-        );
+        // Don't fail the whole request if profile creation fails
       }
     }
 
     // Return session data
     return NextResponse.json({
       success: true,
-      message: 'OTP verified successfully',
+      message: 'Email verified successfully',
       user: {
         id: data.user.id,
-        phone: data.user.phone,
+        email: data.user.email,
       },
       session: data.session,
     });
   } catch (error) {
-    console.error('Verify OTP error:', error);
+    console.error('Verify email OTP error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
