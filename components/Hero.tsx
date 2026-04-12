@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { COLOR_SYSTEM as C } from '@/lib/colors';
 
 interface HeroProps {
@@ -7,6 +8,10 @@ interface HeroProps {
 }
 
 export default function Hero({ onQuiz }: HeroProps) {
+  const [weight, setWeight] = useState(85);
+  const projectedLoss = Math.round(weight * 0.15);
+  const weeks = Math.ceil(projectedLoss / 0.75);
+
   return (
     <section style={{
       background: C.white,
@@ -39,6 +44,42 @@ export default function Hero({ onQuiz }: HeroProps) {
         .hero-stat-card:nth-child(1) { animation-delay: 0.3s; }
         .hero-stat-card:nth-child(2) { animation-delay: 0.5s; }
         .hero-stat-card:nth-child(3) { animation-delay: 0.7s; }
+        .hero-calc-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 6px;
+          border-radius: 3px;
+          background: ${C.borderLight};
+          outline: none;
+          cursor: pointer;
+        }
+        .hero-calc-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: ${C.saffron};
+          box-shadow: 0 2px 8px rgba(255,107,44,0.4);
+          cursor: pointer;
+          transition: transform 0.15s ease;
+        }
+        .hero-calc-slider::-webkit-slider-thumb:hover {
+          transform: scale(1.15);
+        }
+        .hero-calc-slider::-moz-range-thumb {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: ${C.saffron};
+          box-shadow: 0 2px 8px rgba(255,107,44,0.4);
+          border: none;
+          cursor: pointer;
+        }
+        .hero-calc-link:hover {
+          color: ${C.saffron} !important;
+        }
         @media (max-width: 899px) {
           .hero-layout { flex-direction: column !important; text-align: center !important; }
           .hero-left { align-items: center !important; }
@@ -48,6 +89,7 @@ export default function Hero({ onQuiz }: HeroProps) {
           .hero-float-rating { bottom: -12px !important; left: 16px !important; right: auto !important; }
           .hero-float-patients { top: 16px !important; right: 16px !important; left: auto !important; }
           .hero-float-doctor { display: none !important; }
+          .hero-calc-card { align-self: center !important; }
         }
         @media (max-width: 599px) {
           .hero-right { min-height: 300px !important; }
@@ -229,31 +271,143 @@ export default function Hero({ onQuiz }: HeroProps) {
             </button>
           </div>
 
-          {/* Trust bar */}
+          {/* Weight Loss Calculator */}
           <div
-            className="hero-trust-bar"
+            className="hero-calc-card"
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "20px",
-              fontSize: "13px",
-              color: C.textSecondary,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 500,
-            } as any}
+              background: C.bgPrimary,
+              border: `1px solid ${C.borderLight}`,
+              borderRadius: "14px",
+              padding: "18px 22px",
+              maxWidth: "460px",
+              width: "100%",
+            }}
           >
-            {["Licensed Doctors", "FDA-approved", "Free Shipping", "Cancel Anytime"].map((item, i) => (
-              <span key={i} style={{
+            {/* Slider row */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "14px",
+              marginBottom: "10px",
+            }}>
+              <div style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
+                flexShrink: 0,
               }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.saffron} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3v17M8 7l4-4 4 4" />
+                  <rect x="4" y="14" width="16" height="6" rx="2" />
                 </svg>
-                {item}
+                <span style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  color: C.textPrimary,
+                  minWidth: "52px",
+                }}>
+                  {weight} kg
+                </span>
+              </div>
+              <input
+                className="hero-calc-slider"
+                type="range"
+                min={50}
+                max={180}
+                value={weight}
+                onChange={(e) => setWeight(Number(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+
+            {/* Result */}
+            <div style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap" as const,
+              gap: "8px",
+              marginBottom: "12px",
+            }}>
+              <p style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: "14px",
+                color: C.textSecondary,
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                You could lose{" "}
+                <span style={{ fontWeight: 700, color: C.saffron }}>{projectedLoss} kg</span>
+                {" "}in{" "}
+                <span style={{ fontWeight: 700, color: C.textPrimary }}>{weeks} weeks</span>
+              </p>
+              <button
+                className="hero-calc-link"
+                onClick={onQuiz}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: C.saffronDark,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  transition: "color 0.2s ease",
+                  flexShrink: 0,
+                }}
+              >
+                See your plan
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Clinical note + trust items */}
+            <div style={{
+              borderTop: `1px solid ${C.borderLight}`,
+              paddingTop: "10px",
+              display: "flex",
+              flexWrap: "wrap" as const,
+              alignItems: "center",
+              gap: "6px 14px",
+            }}>
+              <span style={{
+                fontSize: "11px",
+                color: C.textMuted,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontStyle: "italic",
+              }}>
+                Based on clinical studies of GLP-1 medication
               </span>
-            ))}
+              <span style={{
+                width: "1px",
+                height: "10px",
+                background: C.border,
+                flexShrink: 0,
+              }} />
+              {["Licensed Doctors", "FDA-approved", "Free Shipping", "Cancel Anytime"].map((item, i) => (
+                <span key={i} style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  fontSize: "11px",
+                  color: C.textMuted,
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 500,
+                }}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 

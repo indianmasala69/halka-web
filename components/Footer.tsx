@@ -4,21 +4,21 @@ import { COLOR_SYSTEM as C } from '@/lib/colors';
 
 const columns = [
   {
-    title: "Programs",
+    title: "Packages",
     links: [
-      { label: "Weight Loss", href: "#" },
-      { label: "Medication Plan", href: "#" },
-      { label: "Metabolic Health", href: "#" },
-      { label: "Nutrition Plans", href: "#" },
+      { label: "Lose 5-10 kg", href: "/checkout?package=lose-5-10-kg" },
+      { label: "Lose 10-20 kg", href: "/checkout?package=lose-10-20-kg" },
+      { label: "Pre-Wedding", href: "/checkout?package=pre-wedding" },
+      { label: "PCOS Management", href: "/checkout?package=pcos-weight-management" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "How it Works", href: "#" },
+      { label: "AI Health Coach", href: "/coach" },
+      { label: "Book Consultation", href: "/booking" },
+      { label: "Refer a Friend", href: "/referral" },
       { label: "FAQ", href: "#" },
-      { label: "Contact Us", href: "#" },
-      { label: "Help Center", href: "#" },
     ],
   },
   {
@@ -147,7 +147,7 @@ export default function Footer() {
           gap: "8px",
         }}>
           <p style={{ fontSize: "11px", color: C.textMuted }}>
-            © 2024 Halka Health Pvt. Ltd. All rights reserved.
+            © 2025 Halka Health Pvt. Ltd. All rights reserved.
           </p>
           <p style={{ fontSize: "11px", color: C.textMuted }}>
             CIN: U74999XX2024PTC000000
