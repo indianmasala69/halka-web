@@ -51,7 +51,7 @@ const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-patel',
-    name: 'Dr. Vikram Patel',
+    name: 'Dr. Meenakshi Iyer',
     initials: 'VP',
     credential: 'DNB Medicine',
     hospital: 'Kokilaben Hospital, Mumbai',

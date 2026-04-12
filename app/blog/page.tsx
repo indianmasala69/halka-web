@@ -35,7 +35,7 @@ const blogPosts = [
   },
   {
     title: 'The Science Behind Metabolic Health',
-    author: 'Dr. Vikram Patel',
+    author: 'Dr. Meenakshi Iyer',
     readTime: '7 min read',
     category: 'GLP-1',
     excerpt: 'Metabolic health goes beyond weight on the scale. Learn about insulin resistance, metabolic syndrome, and how GLP-1 therapies target root causes of weight gain.',

@@ -22,7 +22,7 @@ const doctors = [
     tags: ["Endocrinology", "PCOS"],
   },
   {
-    name: "Dr. Vikram Patel",
+    name: "Dr. Meenakshi Iyer",
     photo: "/images/doctors/doctor-1.jpg",
     credentials: "MBBS, DNB (Medicine)",
     hospital: "Kokilaben Hospital, Mumbai",

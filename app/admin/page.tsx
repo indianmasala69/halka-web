@@ -22,7 +22,7 @@ const mockUsers = [
 const mockBookings = [
   { patient: 'Priya Mehta', doctor: 'Dr. Anand Sharma', date: '2026-04-13', time: '10:00 AM', status: 'Confirmed' },
   { patient: 'Rajesh Kumar', doctor: 'Dr. Priya Nair', date: '2026-04-13', time: '11:30 AM', status: 'Confirmed' },
-  { patient: 'Anita Desai', doctor: 'Dr. Vikram Patel', date: '2026-04-14', time: '2:00 PM', status: 'Pending' },
+  { patient: 'Anita Desai', doctor: 'Dr. Meenakshi Iyer', date: '2026-04-14', time: '2:00 PM', status: 'Pending' },
   { patient: 'Vikram Singh', doctor: 'Dr. Anand Sharma', date: '2026-04-14', time: '4:00 PM', status: 'Confirmed' },
   { patient: 'Arjun Reddy', doctor: 'Dr. Priya Nair', date: '2026-04-15', time: '9:00 AM', status: 'Rescheduled' },
 ];

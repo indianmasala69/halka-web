@@ -11,6 +11,8 @@ const testimonials = [
     text: "I tried everything — gym, keto, intermittent fasting. Nothing stuck. With Halka, my doctor prescribed the right medication and my coach kept me accountable. I've lost 16 kg in 4 months and my blood sugar is normal for the first time in years.",
     result: "Lost 16 kg",
     program: "GLP-1 Program",
+    rating: 5,
+    duration: "4 months",
   },
   {
     name: "Arjun P.",
@@ -20,6 +22,8 @@ const testimonials = [
     text: "As a software engineer, I sit 10+ hours a day. My doctor at Halka understood my lifestyle and created a plan that actually works with my schedule. The WhatsApp check-ins make it so easy.",
     result: "Lost 12 kg",
     program: "Starter Program",
+    rating: 5,
+    duration: "3 months",
   },
   {
     name: "Kavitha S.",
@@ -29,14 +33,32 @@ const testimonials = [
     text: "I have PCOS and was told weight loss would be impossible. My Halka doctor prescribed medication that targets insulin resistance. 14 kg down and my periods are regular now.",
     result: "Lost 14 kg",
     program: "GLP-1 Program",
+    rating: 5,
+    duration: "5 months",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section style={{ background: C.white, padding: "80px 24px" }}>
+    <section style={{ background: C.bgPrimary, padding: "80px 24px" }}>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "52px" }}>
+          <div style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            background: C.greenLight,
+            padding: "6px 16px",
+            borderRadius: "20px",
+            marginBottom: "16px",
+            fontSize: "13px",
+            fontWeight: 600,
+            color: C.green,
+          }}>
+            <span style={{ fontSize: "14px" }}>💬</span>
+            Patient Stories
+          </div>
           <h2 style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 700,
@@ -52,98 +74,130 @@ export default function Testimonials() {
           </p>
         </div>
 
+        {/* Cards */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "24px",
+          alignItems: "stretch",
         }}>
           {testimonials.map((t, i) => (
             <div key={i} style={{
               background: C.white,
               border: `1px solid ${C.border}`,
               borderRadius: "16px",
-              padding: "28px 24px",
+              padding: "0",
               boxShadow: C.shadowSm,
+              display: "flex",
+              flexDirection: "column" as const,
+              overflow: "hidden",
             }}>
-              {/* Stars */}
-              <div style={{ display: "flex", gap: "2px", marginBottom: "16px" }}>
-                {"★★★★★".split("").map((s, j) => (
-                  <span key={j} style={{ color: "#F59E0B", fontSize: "16px" }}>{s}</span>
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p style={{
-                fontSize: "15px",
-                color: C.textSecondary,
-                lineHeight: 1.7,
-                marginBottom: "20px",
-              }}>
-                &ldquo;{t.text}&rdquo;
-              </p>
-
-              {/* Result badge */}
-              <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
-                <span style={{
-                  background: C.greenLight,
-                  color: C.green,
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  padding: "4px 12px",
-                  borderRadius: "20px",
-                }}>
-                  {t.result}
-                </span>
-                <span style={{
-                  background: C.saffronLight,
-                  color: C.saffron,
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  padding: "4px 12px",
-                  borderRadius: "20px",
-                }}>
-                  {t.program}
-                </span>
-              </div>
-
-              {/* Patient info */}
+              {/* Top section: Patient info + rating */}
               <div style={{
-                borderTop: `1px solid ${C.borderLight}`,
-                paddingTop: "16px",
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "14px",
+                padding: "20px 24px 16px",
+                borderBottom: `1px solid ${C.borderLight}`,
               }}>
-                {/* Avatar */}
                 <img
                   src={t.photo}
                   alt={t.name}
                   style={{
-                    width: 48,
-                    height: 48,
+                    width: 52,
+                    height: 52,
                     borderRadius: "50%",
                     objectFit: "cover" as const,
                     flexShrink: 0,
+                    border: `2px solid ${C.borderLight}`,
                   }}
                 />
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                    <span style={{ fontWeight: 600, fontSize: "14px", color: C.textPrimary }}>{t.name}</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2px" }}>
                     <span style={{
-                      background: C.greenLight,
-                      color: C.green,
-                      fontSize: "10px",
+                      fontFamily: "'Outfit', sans-serif",
+                      fontWeight: 700,
+                      fontSize: "15px",
+                      color: C.textPrimary,
+                    }}>
+                      {t.name}
+                    </span>
+                    <span style={{
+                      background: C.green,
+                      color: C.white,
+                      fontSize: "9px",
                       fontWeight: 700,
                       padding: "2px 6px",
-                      borderRadius: "4px",
+                      borderRadius: "3px",
+                      textTransform: "uppercase" as const,
+                      letterSpacing: "0.5px",
                     }}>
-                      VERIFIED
+                      Verified
                     </span>
                   </div>
                   <span style={{ fontSize: "13px", color: C.textMuted }}>
                     {t.age}, {t.city}
                   </span>
                 </div>
+                {/* Star rating */}
+                <div style={{ display: "flex", gap: "1px", flexShrink: 0 }}>
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <svg key={j} width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div style={{ padding: "20px 24px", flex: 1 }}>
+                <p style={{
+                  fontSize: "14.5px",
+                  color: C.textSecondary,
+                  lineHeight: 1.75,
+                  margin: 0,
+                }}>
+                  &ldquo;{t.text}&rdquo;
+                </p>
+              </div>
+
+              {/* Bottom: Result badges */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "16px 24px",
+                borderTop: `1px solid ${C.borderLight}`,
+                background: C.bgPrimary,
+              }}>
+                <span style={{
+                  background: C.greenLight,
+                  color: C.green,
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  padding: "5px 14px",
+                  borderRadius: "6px",
+                }}>
+                  {t.result}
+                </span>
+                <span style={{
+                  background: C.saffronLight,
+                  color: C.saffronDark,
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  padding: "5px 14px",
+                  borderRadius: "6px",
+                }}>
+                  {t.program}
+                </span>
+                <span style={{
+                  fontSize: "12px",
+                  color: C.textMuted,
+                  marginLeft: "auto",
+                  fontWeight: 500,
+                }}>
+                  {t.duration}
+                </span>
               </div>
             </div>
           ))}
