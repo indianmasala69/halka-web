@@ -5,32 +5,29 @@ import { COLOR_SYSTEM as C } from '@/lib/colors';
 const doctors = [
   {
     name: "Dr. Anand Sharma",
-    initials: "AS",
+    photo: "/images/doctors/doctor-2.jpg",
     credentials: "MBBS, MD (Internal Medicine)",
     hospital: "Apollo Hospital, Delhi",
     experience: "15 years experience",
     quote: "I believe in treating the root cause, not just symptoms.",
-    gradient: `linear-gradient(135deg, ${C.navy}, ${C.navyLight})`,
     tags: ["Internal Medicine", "Metabolic Health"],
   },
   {
     name: "Dr. Priya Nair",
-    initials: "PN",
+    photo: "/images/doctors/doctor-3.jpg",
     credentials: "MBBS, MD (Endocrinology)",
     hospital: "Manipal Hospital, Bangalore",
     experience: "12 years experience",
     quote: "Every patient deserves a personalized treatment plan.",
-    gradient: `linear-gradient(135deg, ${C.green}, ${C.greenDark || '#065C38'})`,
     tags: ["Endocrinology", "PCOS"],
   },
   {
     name: "Dr. Vikram Patel",
-    initials: "VP",
+    photo: "/images/doctors/doctor-1.jpg",
     credentials: "MBBS, DNB (Medicine)",
     hospital: "Kokilaben Hospital, Mumbai",
     experience: "18 years experience",
     quote: "Evidence-based medicine combined with compassionate care.",
-    gradient: `linear-gradient(135deg, ${C.saffron}, ${C.saffronDark})`,
     tags: ["General Medicine", "GLP-1 Therapy"],
   },
 ];
@@ -69,23 +66,20 @@ export default function Doctors() {
               boxShadow: C.shadowSm,
               textAlign: "center",
             }}>
-              {/* Photo placeholder */}
-              <div style={{
-                width: 72,
-                height: 72,
-                borderRadius: "50%",
-                background: d.gradient,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: C.white,
-                fontSize: "22px",
-                fontWeight: 700,
-                fontFamily: "'Outfit', sans-serif",
-                margin: "0 auto 16px",
-              }}>
-                {d.initials}
-              </div>
+              {/* Photo */}
+              <img
+                src={d.photo}
+                alt={d.name}
+                style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: "50%",
+                  objectFit: "cover" as const,
+                  border: "3px solid #E2E8F0",
+                  margin: "0 auto 16px",
+                  display: "block",
+                }}
+              />
 
               {/* Name */}
               <h3 style={{

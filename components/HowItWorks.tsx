@@ -8,24 +8,28 @@ const steps = [
     icon: "\uD83D\uDCCB",
     title: "Take the Assessment",
     desc: "5-minute health quiz to understand your body, metabolism, and goals",
+    image: "/images/how-it-works/step-1.jpg",
   },
   {
     num: "02",
     icon: "\uD83D\uDC68\u200D\u2695\uFE0F",
     title: "Meet Your Doctor",
     desc: "15-min video consultation with a licensed physician who creates your plan",
+    image: "/images/how-it-works/step-2.jpg",
   },
   {
     num: "03",
     icon: "\uD83D\uDCE6",
     title: "Receive Your Kit",
     desc: "FDA-approved medication + personalized diet plan delivered to your doorstep",
+    image: "/images/how-it-works/step-3.jpg",
   },
   {
     num: "04",
     icon: "\uD83D\uDCCA",
     title: "Track & Transform",
     desc: "Weekly check-ins with your coach via WhatsApp. Real results, real support",
+    image: null,
   },
 ];
 
@@ -102,11 +106,27 @@ export default function HowItWorks() {
                 background: C.white,
                 border: `1px solid ${C.borderLight}`,
                 borderRadius: "16px",
-                padding: "32px 24px",
                 boxShadow: C.shadowSm,
                 transition: "all 0.3s ease",
                 height: "100%",
+                overflow: "hidden",
               }}>
+                {/* Step image */}
+                {step.image && (
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    style={{
+                      width: "100%",
+                      height: "140px",
+                      objectFit: "cover" as const,
+                      borderRadius: "12px 12px 0 0",
+                      display: "block",
+                    }}
+                  />
+                )}
+
+                <div style={{ padding: "32px 24px" }}>
                 {/* Number badge */}
                 <div style={{
                   display: "inline-flex",
@@ -154,6 +174,7 @@ export default function HowItWorks() {
                 }}>
                   {step.desc}
                 </p>
+                </div>
               </div>
 
               {/* Mobile dotted connector */}

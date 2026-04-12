@@ -33,6 +33,26 @@ export default function Trust() {
   return (
     <section style={{ background: C.white, padding: "80px 24px" }}>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+        {/* Banner image */}
+        <div style={{
+          borderRadius: "16px",
+          overflow: "hidden",
+          marginBottom: "48px",
+          maxHeight: "220px",
+        }}>
+          <img
+            src="/images/trust/consultation.jpg"
+            alt="Doctor consultation"
+            style={{
+              width: "100%",
+              height: "220px",
+              objectFit: "cover" as const,
+              display: "block",
+              opacity: 0.85,
+            }}
+          />
+        </div>
+
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <h2 style={{
             fontFamily: "'Outfit', sans-serif",

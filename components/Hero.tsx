@@ -137,51 +137,23 @@ export default function Hero({ onQuiz }: HeroProps) {
           </div>
         </div>
 
-        {/* Right side — clinical illustration placeholder */}
+        {/* Right side — hero image */}
         <div style={{
           flex: "1 1 400px",
           minWidth: "300px",
-          minHeight: "400px",
-          borderRadius: "20px",
-          background: `linear-gradient(135deg, ${C.saffronLight} 0%, ${C.greenLight} 100%)`,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "16px",
-          border: `1px solid ${C.border}`,
-          position: "relative",
-          overflow: "hidden",
-        } as any}>
-          {/* Decorative medical icons */}
-          <div style={{ fontSize: "48px", opacity: 0.6 }}>🩺</div>
-          <div style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 700,
-            fontSize: "18px",
-            color: C.textSecondary,
-            opacity: 0.5,
-          }}>
-            Clinical Illustration
-          </div>
-          <div style={{
-            display: "flex",
-            gap: "20px",
-            fontSize: "32px",
-            opacity: 0.4,
-          }}>
-            <span>💊</span>
-            <span>📋</span>
-            <span>📊</span>
-          </div>
-          {/* Subtle grid pattern overlay */}
-          <div style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-            pointerEvents: "none",
-          }} />
+        }}>
+          <img
+            src="/images/hero/hero-woman.jpg"
+            alt="Woman achieving her health goals with Halka"
+            style={{
+              borderRadius: "16px",
+              objectFit: "cover" as const,
+              width: "100%",
+              maxHeight: "500px",
+              display: "block",
+              boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
+            }}
+          />
         </div>
       </div>
     </section>

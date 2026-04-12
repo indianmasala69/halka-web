@@ -7,8 +7,7 @@ const testimonials = [
     name: "Meera R.",
     age: 34,
     city: "Hyderabad",
-    initials: "MR",
-    color: C.saffron,
+    photo: "/images/testimonials/meera.jpg",
     text: "I tried everything — gym, keto, intermittent fasting. Nothing stuck. With Halka, my doctor prescribed the right medication and my coach kept me accountable. I've lost 16 kg in 4 months and my blood sugar is normal for the first time in years.",
     result: "Lost 16 kg",
     program: "GLP-1 Program",
@@ -17,8 +16,7 @@ const testimonials = [
     name: "Arjun P.",
     age: 42,
     city: "Pune",
-    initials: "AP",
-    color: C.green,
+    photo: "/images/testimonials/arjun.jpg",
     text: "As a software engineer, I sit 10+ hours a day. My doctor at Halka understood my lifestyle and created a plan that actually works with my schedule. The WhatsApp check-ins make it so easy.",
     result: "Lost 12 kg",
     program: "Starter Program",
@@ -27,8 +25,7 @@ const testimonials = [
     name: "Kavitha S.",
     age: 29,
     city: "Chennai",
-    initials: "KS",
-    color: C.navy,
+    photo: "/images/testimonials/kavitha.jpg",
     text: "I have PCOS and was told weight loss would be impossible. My Halka doctor prescribed medication that targets insulin resistance. 14 kg down and my periods are regular now.",
     result: "Lost 14 kg",
     program: "GLP-1 Program",
@@ -118,22 +115,17 @@ export default function Testimonials() {
                 gap: "12px",
               }}>
                 {/* Avatar */}
-                <div style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  background: t.color,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: C.white,
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  fontFamily: "'Outfit', sans-serif",
-                  flexShrink: 0,
-                }}>
-                  {t.initials}
-                </div>
+                <img
+                  src={t.photo}
+                  alt={t.name}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    objectFit: "cover" as const,
+                    flexShrink: 0,
+                  }}
+                />
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                     <span style={{ fontWeight: 600, fontSize: "14px", color: C.textPrimary }}>{t.name}</span>

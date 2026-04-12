@@ -8,21 +8,24 @@ const transformations = [
     stats: "Lost 18 kg in 4 months",
     program: "GLP-1 Program",
     quote: "I finally found something that works. My doctor was with me every step of the way.",
-    gradient: `linear-gradient(135deg, ${C.saffronLight} 0%, #FFE0D0 100%)`,
+    beforeImg: "/images/before-after/pair1-before.jpg",
+    afterImg: "/images/before-after/pair1-after.jpg",
   },
   {
     name: "Rahul K., Delhi",
     stats: "Lost 22 kg in 5 months",
     program: "GLP-1 Program",
     quote: "The medication combined with the diet plan changed my life. I feel like a new person.",
-    gradient: `linear-gradient(135deg, ${C.greenLight} 0%, #D0F0E0 100%)`,
+    beforeImg: "/images/before-after/pair2-before.jpg",
+    afterImg: "/images/before-after/pair2-after.jpg",
   },
   {
     name: "Ananya M., Bangalore",
     stats: "Lost 14 kg in 3 months",
     program: "Starter Program",
     quote: "WhatsApp check-ins kept me accountable. The convenience of home delivery was a game-changer.",
-    gradient: `linear-gradient(135deg, #EDE9FE 0%, #E0E7FF 100%)`,
+    beforeImg: "/images/before-after/pair3-before.jpg",
+    afterImg: "/images/before-after/pair3-after.jpg",
   },
 ];
 
@@ -80,35 +83,59 @@ export default function BeforeAfter() {
               overflow: "hidden",
               transition: "all 0.3s ease",
             }}>
-              {/* Before/After image placeholder */}
+              {/* Before/After images */}
               <div style={{
-                background: t.gradient,
-                height: "200px",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 position: "relative",
               }}>
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  color: C.textSecondary,
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "16px",
-                  opacity: 0.6,
-                }}>
+                <div style={{ flex: 1, position: "relative" }}>
+                  <img
+                    src={t.beforeImg}
+                    alt={`${t.name} before`}
+                    style={{
+                      width: "100%",
+                      height: "280px",
+                      objectFit: "cover" as const,
+                      borderRadius: "12px 0 0 0",
+                      display: "block",
+                    }}
+                  />
                   <span style={{
-                    padding: "8px 16px",
-                    background: "rgba(255,255,255,0.7)",
-                    borderRadius: "8px",
+                    position: "absolute",
+                    bottom: "8px",
+                    left: "8px",
+                    padding: "4px 12px",
+                    background: "rgba(0,0,0,0.6)",
+                    color: "#fff",
+                    borderRadius: "6px",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                   }}>Before</span>
-                  <span>→</span>
+                </div>
+                <div style={{ flex: 1, position: "relative" }}>
+                  <img
+                    src={t.afterImg}
+                    alt={`${t.name} after`}
+                    style={{
+                      width: "100%",
+                      height: "280px",
+                      objectFit: "cover" as const,
+                      borderRadius: "0 12px 0 0",
+                      display: "block",
+                    }}
+                  />
                   <span style={{
-                    padding: "8px 16px",
-                    background: "rgba(255,255,255,0.7)",
-                    borderRadius: "8px",
+                    position: "absolute",
+                    bottom: "8px",
+                    right: "8px",
+                    padding: "4px 12px",
+                    background: "rgba(0,0,0,0.6)",
+                    color: "#fff",
+                    borderRadius: "6px",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                   }}>After</span>
                 </div>
               </div>
