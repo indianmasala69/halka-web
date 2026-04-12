@@ -7,12 +7,31 @@ export default function Doctors() {
   return (
     <section style={{ background: C.white, padding: "100px 24px", overflow: "hidden" }}>
       <style>{`
-        .doc-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
-        .doc-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.12) !important; }
-        .doc-card:hover .doc-photo { transform: scale(1.05); }
-        .doc-card:hover .doc-cta { background: ${C.saffron} !important; color: #fff !important; border-color: ${C.saffron} !important; }
+        .doc-card {
+          transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .doc-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 48px rgba(0,0,0,0.12) !important;
+        }
+        .doc-card:hover .doc-photo {
+          transform: scale(1.05);
+        }
+        .doc-card .doc-cta {
+          background: ${C.white};
+          color: ${C.textPrimary};
+          border-color: ${C.border};
+        }
+        .doc-card:hover .doc-cta {
+          background: ${C.saffron} !important;
+          color: #fff !important;
+          border-color: ${C.saffron} !important;
+        }
         @media (max-width: 767px) {
           .doc-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .doc-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
       <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
@@ -66,6 +85,7 @@ export default function Doctors() {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: "24px",
+            alignItems: "stretch",
           } as any}
         >
           {doctors.map((d, i) => (
@@ -205,8 +225,18 @@ export default function Doctors() {
                   </div>
                 </div>
 
-                {/* Tags */}
-                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" as const, marginBottom: "20px", flex: 1 }}>
+                {/* Tags — fixed height for alignment */}
+                <div style={{
+                  display: "flex",
+                  gap: "6px",
+                  flexWrap: "wrap" as const,
+                  marginBottom: "20px",
+                  flex: 1,
+                  alignContent: "flex-start",
+                  minHeight: "32px",
+                  maxHeight: "32px",
+                  overflow: "hidden",
+                }}>
                   {d.tags.slice(0, 3).map((tag, j) => (
                     <span key={j} style={{
                       background: C.bgPrimary,
@@ -216,13 +246,14 @@ export default function Doctors() {
                       padding: "4px 10px",
                       borderRadius: "6px",
                       border: `1px solid ${C.borderLight}`,
+                      whiteSpace: "nowrap" as const,
                     }}>
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* CTA */}
+                {/* CTA — always at bottom */}
                 <div
                   className="doc-cta"
                   style={{
@@ -233,12 +264,11 @@ export default function Doctors() {
                     padding: "14px",
                     borderRadius: "12px",
                     border: `1.5px solid ${C.border}`,
-                    background: C.white,
-                    color: C.textPrimary,
                     fontWeight: 600,
                     fontSize: "14px",
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     transition: "all 0.3s ease",
+                    marginTop: "auto",
                   }}
                 >
                   View Profile
