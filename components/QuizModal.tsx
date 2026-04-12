@@ -194,10 +194,10 @@ export default function QuizModal({ onClose, user }: QuizModalProps) {
             <div style={{ fontFamily: "'Outfit'", fontWeight: 800, fontSize: "22px", color: C.charcoal, marginTop: "4px" }}>{rec}</div>
             <div style={{ fontSize: "13px", color: C.textMuted, marginTop: "4px" }}>{rec === "GLP-1 Program" ? "₹4,999/mo" : "₹2,499/mo"} — doctor + medication + coach</div>
           </div>
-          <button style={{ ...btnPrimary, marginBottom: "10px", opacity: loading ? 0.6 : 1 }} disabled={loading}>
+          <button onClick={() => window.location.href = '/booking'} style={{ ...btnPrimary, marginBottom: "10px", opacity: loading ? 0.6 : 1 } as any} disabled={loading}>
             {loading ? "Saving..." : "Book Doctor Consultation — Free"}
           </button>
-          <button onClick={onClose} style={{ ...btnPrimary, background: "transparent", color: C.textMuted, border: "none" }}>I'll decide later</button>
+          <button onClick={onClose} style={{ ...btnPrimary, background: "transparent", color: C.textMuted, border: "none" } as any}>I'll decide later</button>
         </div>
       </div>
     );

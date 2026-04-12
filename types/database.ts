@@ -4,7 +4,8 @@ export type Database = {
       user_profiles: {
         Row: {
           id: string;
-          phone: string;
+          email: string | null;
+          phone: string | null;
           name: string | null;
           profile_photo_url: string | null;
           created_at: string;
@@ -12,11 +13,14 @@ export type Database = {
         };
         Insert: {
           id: string;
-          phone: string;
+          email?: string | null;
+          phone?: string | null;
           name?: string | null;
           profile_photo_url?: string | null;
         };
         Update: {
+          email?: string | null;
+          phone?: string | null;
           name?: string | null;
           profile_photo_url?: string | null;
           updated_at?: string;

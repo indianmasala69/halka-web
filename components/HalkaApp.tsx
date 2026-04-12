@@ -4,10 +4,13 @@ import { useState } from 'react';
 import QuizModal from './QuizModal';
 import Nav from './Nav';
 import Hero from './Hero';
-import Categories from './Categories';
+import Stats from './Stats';
 import HowItWorks from './HowItWorks';
+import BeforeAfter from './BeforeAfter';
 import Testimonials from './Testimonials';
+import Doctors from './Doctors';
 import Pricing from './Pricing';
+import FAQ from './FAQ';
 import Trust from './Trust';
 import FinalCTA from './FinalCTA';
 import Footer from './Footer';
@@ -31,10 +34,13 @@ export default function HalkaApp({ user }: HalkaAppProps) {
       `}</style>
       <Nav onQuiz={() => setQuiz(true)} />
       <Hero onQuiz={() => setQuiz(true)} />
-      <Categories onQuiz={() => setQuiz(true)} />
+      <Stats />
       <HowItWorks />
+      <BeforeAfter />
       <Testimonials />
+      <Doctors />
       <Pricing onQuiz={() => setQuiz(true)} />
+      <FAQ />
       <Trust />
       <FinalCTA onQuiz={() => setQuiz(true)} />
       <Footer />

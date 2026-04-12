@@ -2,34 +2,156 @@
 
 import { COLOR_SYSTEM as C } from '@/lib/colors';
 
+const columns = [
+  {
+    title: "Programs",
+    links: [
+      { label: "Weight Loss", href: "#" },
+      { label: "GLP-1 Program", href: "#" },
+      { label: "Metabolic Health", href: "#" },
+      { label: "Nutrition Plans", href: "#" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "How it Works", href: "#" },
+      { label: "FAQ", href: "#" },
+      { label: "Contact Us", href: "#" },
+      { label: "Help Center", href: "#" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Terms of Service", href: "/legal/terms" },
+      { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Medical Disclaimer", href: "/legal/disclaimer" },
+      { label: "Refund Policy", href: "#" },
+    ],
+  },
+  {
+    title: "Connect",
+    links: [
+      { label: "WhatsApp", href: "#" },
+      { label: "Instagram", href: "#" },
+      { label: "Email", href: "#" },
+    ],
+  },
+];
+
 export default function Footer() {
   return (
-    <footer style={{ background: C.cream, padding: "48px 24px 32px", borderTop: `1px solid ${C.borderLight}` }}>
-      <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "40px", marginBottom: "40px" }}>
-          <div style={{ maxWidth: "300px" }}>
+    <footer style={{
+      background: C.white,
+      borderTop: `1px solid ${C.border}`,
+      padding: "48px 24px 32px",
+    }}>
+      <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+        {/* Top: logo + columns */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1.5fr repeat(4, 1fr)",
+          gap: "32px",
+          marginBottom: "40px",
+        }}>
+          {/* Logo section */}
+          <div>
             <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "12px" }}>
-              <span style={{ fontFamily: "'Outfit'", fontWeight: 900, fontSize: "22px", color: C.charcoal }}>halka</span>
-              <span style={{ fontFamily: "'Noto Sans Devanagari'", fontSize: "12px", color: C.saffron }}>हल्का</span>
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 800,
+                fontSize: "22px",
+                color: C.textPrimary,
+              }}>
+                halka
+              </span>
+              <span style={{
+                fontFamily: "'Noto Sans Devanagari'",
+                fontSize: "12px",
+                color: C.saffron,
+              }}>
+                हल्का
+              </span>
             </div>
-            <p style={{ fontSize: "13px", color: C.textMuted, lineHeight: 1.6 }}>Doctor-led weight loss for India. Licensed doctors, proven treatments, real results.</p>
+            <p style={{ fontSize: "13px", color: C.textMuted, lineHeight: 1.6, maxWidth: "220px" }}>
+              Doctor-led weight loss for India
+            </p>
           </div>
-          <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
-            {[
-              { title: "Programs", links: ["Weight Loss", "GLP-1 Therapy", "Pricing"] },
-              { title: "Support", links: ["WhatsApp Us", "FAQ", "Contact"] },
-              { title: "Legal", links: ["Privacy Policy", "Terms", "Medical Consent"] },
-            ].map((col, i) => (
-              <div key={i}>
-                <div style={{ fontSize: "12px", fontWeight: 700, color: C.charcoal, marginBottom: "14px", textTransform: "uppercase", letterSpacing: "1px" }}>{col.title}</div>
-                {col.links.map((l, j) => <div key={j} style={{ fontSize: "13px", color: C.textMuted, marginBottom: "10px", cursor: "pointer" }}>{l}</div>)}
+
+          {/* Link columns */}
+          {columns.map((col, i) => (
+            <div key={i}>
+              <div style={{
+                fontSize: "12px",
+                fontWeight: 700,
+                color: C.textPrimary,
+                marginBottom: "14px",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}>
+                {col.title}
               </div>
-            ))}
-          </div>
+              {col.links.map((link, j) => (
+                <a
+                  key={j}
+                  href={link.href}
+                  style={{
+                    display: "block",
+                    fontSize: "13px",
+                    color: C.textMuted,
+                    marginBottom: "10px",
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))}
         </div>
-        <div style={{ borderTop: `1px solid ${C.borderLight}`, paddingTop: "20px", fontSize: "11px", color: C.textMuted, lineHeight: 1.8 }}>
-          <p>Medical consultations provided by independent licensed practitioners following Telemedicine Practice Guidelines 2020.</p>
-          <p style={{ marginTop: "8px" }}>© 2026 Halka Health. All rights reserved.</p>
+
+        {/* Responsive override for mobile: stack columns */}
+        <style>{`
+          @media (max-width: 768px) {
+            footer > div > div:first-child {
+              grid-template-columns: 1fr 1fr !important;
+            }
+          }
+          @media (max-width: 480px) {
+            footer > div > div:first-child {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
+
+        {/* Medical disclaimer */}
+        <div style={{
+          borderTop: `1px solid ${C.borderLight}`,
+          paddingTop: "20px",
+          marginBottom: "16px",
+        }}>
+          <p style={{ fontSize: "11px", color: C.textMuted, lineHeight: 1.8 }}>
+            halka is a telehealth platform. All medications are prescribed by licensed physicians.
+            halka does not provide emergency medical services.
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "8px",
+        }}>
+          <p style={{ fontSize: "11px", color: C.textMuted }}>
+            © 2024 Halka Health Pvt. Ltd. All rights reserved.
+          </p>
+          <p style={{ fontSize: "11px", color: C.textMuted }}>
+            CIN: U74999XX2024PTC000000
+          </p>
         </div>
       </div>
     </footer>

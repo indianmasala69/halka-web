@@ -6,47 +6,69 @@ interface FinalCTAProps {
   onQuiz: () => void;
 }
 
-const btnPrimary = {
-  background: C.saffron,
-  color: C.white,
-  border: "none",
-  padding: "18px 48px",
-  borderRadius: "60px",
-  fontWeight: 700,
-  fontSize: "16px",
-  cursor: "pointer",
-  fontFamily: "'Plus Jakarta Sans', sans-serif",
-  boxShadow: "0 0 40px rgba(232,145,58,0.3)",
-};
-
 export default function FinalCTA({ onQuiz }: FinalCTAProps) {
   return (
-    <section style={{ background: C.cream, padding: "100px 24px" }}>
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          textAlign: "center",
-          background: C.charcoal,
-          borderRadius: "32px",
-          padding: "72px 40px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ position: "absolute", top: "-30%", right: "-10%", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(232,145,58,0.15) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <h2 style={{ fontFamily: "'Outfit'", fontWeight: 900, fontSize: "clamp(28px, 5vw, 44px)", color: C.white, letterSpacing: "-1.5px", marginBottom: "16px", lineHeight: 1.15, position: "relative" }}>
-          Ready to feel <span style={{ color: C.saffron }}>halka</span>?
+    <section style={{ background: C.navy, padding: "80px 24px" }}>
+      <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+        <h2 style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(28px, 4vw, 40px)",
+          color: C.white,
+          letterSpacing: "-0.5px",
+          marginBottom: "16px",
+          lineHeight: 1.2,
+        }}>
+          Your healthier self is 5 minutes away
         </h2>
-        <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.6)", maxWidth: "420px", margin: "0 auto 36px", lineHeight: 1.7 }}>
-          Take the free 5-minute assessment. Get matched with a doctor. See results in weeks, not months.
+
+        <p style={{
+          fontSize: "16px",
+          color: "rgba(255,255,255,0.65)",
+          maxWidth: "460px",
+          margin: "0 auto 32px",
+          lineHeight: 1.7,
+        }}>
+          Take our free assessment and get a personalized plan from a licensed doctor
         </p>
-        <button onClick={onQuiz} style={btnPrimary as any}>
-          Take Free Assessment →
+
+        <button
+          onClick={onQuiz}
+          style={{
+            background: C.white,
+            color: C.navy,
+            border: "none",
+            padding: "16px 40px",
+            borderRadius: "12px",
+            fontWeight: 700,
+            fontSize: "16px",
+            cursor: "pointer",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            minHeight: "48px",
+          }}
+        >
+          Start Free Assessment →
         </button>
-        <div style={{ marginTop: "24px", display: "flex", justifyContent: "center", gap: "28px", flexWrap: "wrap" }}>
-          {["Doctor-led plans", "Free shipping", "No hidden fees", "Cancel anytime"].map((t, i) => (
-            <span key={i} style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", display: "flex", alignItems: "center", gap: "6px" }}>
+
+        <div style={{
+          marginTop: "28px",
+          display: "flex",
+          justifyContent: "center",
+          gap: "24px",
+          flexWrap: "wrap",
+        }}>
+          {[
+            "No credit card required",
+            "5-minute assessment",
+            "Doctor consultation included",
+          ].map((t, i) => (
+            <span key={i} style={{
+              fontSize: "13px",
+              color: "rgba(255,255,255,0.5)",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}>
               <span style={{ color: C.saffron }}>✓</span> {t}
             </span>
           ))}
