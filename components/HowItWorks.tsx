@@ -29,7 +29,7 @@ const steps = [
     icon: "\uD83D\uDCCA",
     title: "Track & Transform",
     desc: "Weekly check-ins with your coach via WhatsApp. Real results, real support",
-    image: null,
+    image: "/images/how-it-works/step-4.jpg",
   },
 ];
 
