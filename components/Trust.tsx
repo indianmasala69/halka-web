@@ -4,26 +4,32 @@ import { COLOR_SYSTEM as C } from '@/lib/colors';
 
 const items = [
   {
+    icon: "🩺",
     title: "Licensed Indian Doctors",
     desc: "MBBS/MD physicians registered with the Medical Council of India",
   },
   {
+    icon: "💊",
     title: "FDA-Approved Medication",
     desc: "Only clinically-proven, safe medications prescribed after assessment",
   },
   {
+    icon: "💬",
     title: "WhatsApp-Native Support",
     desc: "Your coach is just a message away. Real humans, real responses",
   },
   {
+    icon: "🇮🇳",
     title: "Built for Indian Bodies",
     desc: "Plans designed around Indian diets, lifestyles, and metabolic profiles",
   },
   {
+    icon: "🔒",
     title: "100% Confidential",
     desc: "Your health data is encrypted and never shared. HIPAA-equivalent standards",
   },
   {
+    icon: "₹",
     title: "No Hidden Costs",
     desc: "Medication, consultations, and coaching included in your plan price",
   },
@@ -33,68 +39,80 @@ export default function Trust() {
   return (
     <section style={{ background: C.white, padding: "80px 24px" }}>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-        {/* Banner image */}
+        {/* Header with image integrated */}
         <div style={{
-          borderRadius: "16px",
-          overflow: "hidden",
-          marginBottom: "48px",
-          maxHeight: "220px",
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gap: "40px",
+          marginBottom: "52px",
+          alignItems: "center",
         }}>
-          <img
-            src="/images/trust/consultation.jpg"
-            alt="Doctor consultation"
-            style={{
-              width: "100%",
-              height: "220px",
-              objectFit: "cover" as const,
-              display: "block",
-              opacity: 0.85,
-            }}
-          />
+          <div style={{ textAlign: "center" }}>
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: C.greenLight,
+              padding: "6px 16px",
+              borderRadius: "20px",
+              marginBottom: "16px",
+              fontSize: "13px",
+              fontWeight: 600,
+              color: C.green,
+            }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Trusted & Verified
+            </div>
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(28px, 4vw, 40px)",
+              color: C.textPrimary,
+              letterSpacing: "-0.5px",
+              marginBottom: "12px",
+            }}>
+              Why patients trust halka
+            </h2>
+            <p style={{ fontSize: "16px", color: C.textSecondary, maxWidth: "480px", margin: "0 auto", lineHeight: 1.6 }}>
+              Built on clinical evidence, delivered with care
+            </p>
+          </div>
         </div>
 
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <h2 style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(28px, 4vw, 40px)",
-            color: C.textPrimary,
-            letterSpacing: "-0.5px",
-            marginBottom: "12px",
-          }}>
-            Why patients trust halka
-          </h2>
-        </div>
-
+        {/* Trust grid */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "20px",
+          gap: "16px",
         }}>
           {items.map((item, i) => (
             <div
               key={i}
               style={{
                 display: "flex",
-                gap: "14px",
-                padding: "24px 20px",
-                background: C.white,
-                border: `1px solid ${C.border}`,
-                borderRadius: "12px",
-                boxShadow: C.shadowSm,
+                gap: "16px",
+                padding: "24px",
+                background: C.bgPrimary,
+                borderRadius: "14px",
+                border: `1px solid ${C.borderLight}`,
+                transition: "all 0.2s ease",
               }}
             >
               <div style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                background: C.greenLight,
+                width: 44,
+                height: 44,
+                borderRadius: "12px",
+                background: C.white,
+                border: `1px solid ${C.border}`,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
+                fontSize: "20px",
               }}>
-                <span style={{ color: C.green, fontSize: "16px", fontWeight: 700 }}>✓</span>
+                {item.icon}
               </div>
               <div>
                 <h4 style={{
@@ -106,12 +124,59 @@ export default function Trust() {
                 }}>
                   {item.title}
                 </h4>
-                <p style={{ fontSize: "13px", color: C.textMuted, lineHeight: 1.6 }}>
+                <p style={{ fontSize: "13px", color: C.textMuted, lineHeight: 1.6, margin: 0 }}>
                   {item.desc}
                 </p>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom trust image banner */}
+        <div style={{
+          marginTop: "48px",
+          borderRadius: "16px",
+          overflow: "hidden",
+          position: "relative" as const,
+        }}>
+          <img
+            src="/images/trust/consultation.jpg"
+            alt="Doctor consultation"
+            style={{
+              width: "100%",
+              height: "200px",
+              objectFit: "cover" as const,
+              display: "block",
+            }}
+          />
+          <div style={{
+            position: "absolute" as const,
+            inset: 0,
+            background: "linear-gradient(to right, rgba(27,43,75,0.85), rgba(27,43,75,0.4))",
+            display: "flex",
+            alignItems: "center",
+            padding: "0 40px",
+          }}>
+            <div>
+              <p style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(18px, 3vw, 24px)",
+                color: C.white,
+                marginBottom: "6px",
+              }}>
+                Your health is in safe hands
+              </p>
+              <p style={{
+                fontSize: "14px",
+                color: "rgba(255,255,255,0.8)",
+                maxWidth: "400px",
+                lineHeight: 1.5,
+              }}>
+                Every treatment plan is reviewed and approved by a licensed physician before any medication is prescribed.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
