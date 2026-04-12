@@ -4,34 +4,34 @@ import { COLOR_SYSTEM as C } from '@/lib/colors';
 
 const items = [
   {
-    icon: "🩺",
     title: "Licensed Indian Doctors",
     desc: "MBBS/MD physicians registered with the Medical Council of India",
+    iconPath: "M22 12h-4l-3 9L9 3l-3 9H2",
   },
   {
-    icon: "💊",
     title: "FDA-Approved Medication",
     desc: "Only clinically-proven, safe medications prescribed after assessment",
+    iconPath: "M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z M12 9v4 M12 17h.01",
   },
   {
-    icon: "💬",
     title: "WhatsApp-Native Support",
     desc: "Your coach is just a message away. Real humans, real responses",
+    iconPath: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
   },
   {
-    icon: "🇮🇳",
     title: "Built for Indian Bodies",
     desc: "Plans designed around Indian diets, lifestyles, and metabolic profiles",
+    iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
   },
   {
-    icon: "🔒",
     title: "100% Confidential",
     desc: "Your health data is encrypted and never shared. HIPAA-equivalent standards",
+    iconPath: "M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z M7 11V7a5 5 0 0 1 10 0v4",
   },
   {
-    icon: "₹",
     title: "No Hidden Costs",
     desc: "Medication, consultations, and coaching included in your plan price",
+    iconPath: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
   },
 ];
 
@@ -112,7 +112,9 @@ export default function Trust() {
                 flexShrink: 0,
                 fontSize: "20px",
               }}>
-                {item.icon}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={item.iconPath} />
+                </svg>
               </div>
               <div>
                 <h4 style={{
