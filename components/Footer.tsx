@@ -7,7 +7,7 @@ const columns = [
     title: "Programs",
     links: [
       { label: "Weight Loss", href: "#" },
-      { label: "GLP-1 Program", href: "#" },
+      { label: "Medication Plan", href: "#" },
       { label: "Metabolic Health", href: "#" },
       { label: "Nutrition Plans", href: "#" },
     ],

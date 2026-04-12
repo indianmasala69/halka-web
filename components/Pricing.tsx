@@ -22,11 +22,11 @@ const plans = [
     ],
   },
   {
-    name: "GLP-1 Program",
+    name: "Medication Plan",
     price: "₹4,999",
-    subtitle: "Most effective for significant weight loss",
+    subtitle: "Prescription weight loss medication included",
     popular: true,
-    cta: "Start GLP-1 Program",
+    cta: "Start Medication Plan",
     features: [
       "Everything in Starter PLUS",
       "FDA-approved GLP-1 medication",
@@ -43,7 +43,7 @@ const plans = [
     popular: false,
     cta: "Go Premium",
     features: [
-      "Everything in GLP-1 PLUS",
+      "Everything in Medication PLUS",
       "Dedicated health coach",
       "Weekly doctor consultations",
       "Nutritionist sessions",

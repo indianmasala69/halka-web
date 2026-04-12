@@ -4,7 +4,7 @@ import { COLOR_SYSTEM as C } from '@/lib/colors';
 
 const stats = [
   { value: "10,000+", label: "Patients treated" },
-  { value: "200+", label: "Licensed doctors" },
+  { value: "200+", label: "Prescribing doctors" },
   { value: "94%", label: "See results in 12 weeks" },
   { value: "4.8\u2605", label: "Patient satisfaction" },
 ];

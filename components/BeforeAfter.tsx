@@ -6,7 +6,7 @@ const transformations = [
   {
     name: "Priya S., Mumbai",
     stats: "Lost 18 kg in 4 months",
-    program: "GLP-1 Program",
+    program: "Medication Plan",
     quote: "I finally found something that works. My doctor was with me every step of the way.",
     beforeImg: "/images/before-after/pair1-before.jpg",
     afterImg: "/images/before-after/pair1-after.jpg",
@@ -14,7 +14,7 @@ const transformations = [
   {
     name: "Rahul K., Delhi",
     stats: "Lost 22 kg in 5 months",
-    program: "GLP-1 Program",
+    program: "Medication Plan",
     quote: "The medication combined with the diet plan changed my life. I feel like a new person.",
     beforeImg: "/images/before-after/pair2-before.jpg",
     afterImg: "/images/before-after/pair2-after.jpg",

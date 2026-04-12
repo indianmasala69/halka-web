@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: "How do the doctor consultations work?",
-    a: "All consultations are via video call (Google Meet). Your first consultation is 15 minutes, follow-ups are 10 minutes. You'll also have unlimited WhatsApp access to your care team.",
+    a: "All consultations are via video call (Google Meet). Your first consultation is 25 minutes, follow-ups are 10 minutes. You'll also have unlimited WhatsApp access to your care team.",
   },
 ];
 

@@ -13,7 +13,7 @@ const steps = [
   {
     num: "02",
     title: "Meet Your Doctor",
-    desc: "15-min video consultation with a licensed physician who creates your plan",
+    desc: "25-min video consultation with a licensed physician who creates your plan",
     image: "/images/how-it-works/step-2.jpg",
     accent: C.green,
   },

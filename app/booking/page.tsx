@@ -602,7 +602,7 @@ export default function BookingPage() {
           <path d="M15 10l-4 4l-2-2" />
           <circle cx="12" cy="12" r="10" />
         </svg>
-        15-minute video consultation via Google Meet
+        25-minute video consultation via Google Meet
       </div>
     </div>
   );
@@ -702,7 +702,7 @@ export default function BookingPage() {
           {[
             { label: 'Date', value: selectedDate ? formatDate(selectedDate) : '' },
             { label: 'Time', value: selectedTime || '' },
-            { label: 'Duration', value: '15 minutes' },
+            { label: 'Duration', value: '25 minutes' },
             { label: 'Type', value: 'Video consultation (Google Meet)' },
           ].map(({ label, value }) => (
             <div

@@ -169,7 +169,7 @@ export default function QuizModal({ onClose, user }: QuizModalProps) {
     const b = bmi();
     const tl = toLose();
     const cat = b && parseFloat(b) > 30 ? "Obese" : b && parseFloat(b) > 25 ? "Overweight" : b && parseFloat(b) > 18.5 ? "Normal" : "Underweight";
-    const rec = b && parseFloat(b) > 27 ? "GLP-1 Program" : "Starter Program";
+    const rec = b && parseFloat(b) > 27 ? "Medication Plan" : "Starter Program";
 
     return (
       <div style={modalBg}>
@@ -192,7 +192,7 @@ export default function QuizModal({ onClose, user }: QuizModalProps) {
           <div style={{ background: C.saffronLight, border: `1px solid rgba(232,145,58,0.3)`, borderRadius: "16px", padding: "20px", marginBottom: "24px" }}>
             <div style={{ fontSize: "11px", color: C.saffron, fontWeight: 800, letterSpacing: "1px" }}>RECOMMENDED</div>
             <div style={{ fontFamily: "'Outfit'", fontWeight: 800, fontSize: "22px", color: C.charcoal, marginTop: "4px" }}>{rec}</div>
-            <div style={{ fontSize: "13px", color: C.textMuted, marginTop: "4px" }}>{rec === "GLP-1 Program" ? "₹4,999/mo" : "₹2,499/mo"} — doctor + medication + coach</div>
+            <div style={{ fontSize: "13px", color: C.textMuted, marginTop: "4px" }}>{rec === "Medication Plan" ? "₹4,999/mo" : "₹2,499/mo"} — doctor + medication + coach</div>
           </div>
           <button onClick={() => window.location.href = '/booking'} style={{ ...btnPrimary, marginBottom: "10px", opacity: loading ? 0.6 : 1 } as any} disabled={loading}>
             {loading ? "Saving..." : "Book Doctor Consultation — Free"}

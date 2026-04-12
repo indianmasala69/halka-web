@@ -85,7 +85,7 @@ export default function DashboardPage() {
           const bmi = h && w ? w / (h * h) : 0;
           const bmiRounded = parseFloat(bmi.toFixed(1));
           const toLose = w && quizData.target_weight_kg ? w - quizData.target_weight_kg : 0;
-          const program = bmi > 27 ? 'GLP-1 Program' : 'Starter Program';
+          const program = bmi > 27 ? 'Medication Plan' : 'Starter Program';
           const { category, color } = getBmiInfo(bmiRounded);
           const totalToLose = toLose;
           const progressPercent = totalToLose > 0 ? Math.min(Math.max(0, 0), 100) : 0;

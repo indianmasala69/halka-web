@@ -49,17 +49,18 @@ export default function Nav({ onQuiz }: NavProps) {
         </span>
         <span style={{
           fontSize: "10px",
-          fontWeight: 600,
-          color: C.textMuted,
+          fontWeight: 700,
+          color: C.green,
           textTransform: "uppercase" as const,
-          letterSpacing: "0.5px",
-          marginLeft: "4px",
-          padding: "2px 6px",
-          background: C.borderLight,
+          letterSpacing: "1px",
+          marginLeft: "6px",
+          padding: "3px 8px",
+          background: C.greenLight,
           borderRadius: "4px",
           marginTop: "2px",
+          border: `1px solid ${C.green}20`,
         }}>
-          by doctors
+          Doctor-prescribed
         </span>
       </div>
 

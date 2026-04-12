@@ -127,36 +127,52 @@ export default function Hero({ onQuiz }: HeroProps) {
           <h1 style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(36px, 5vw, 58px)",
+            fontSize: "clamp(36px, 5vw, 56px)",
             lineHeight: 1.08,
             letterSpacing: "-2px",
             color: C.textPrimary,
             marginBottom: "20px",
           }}>
-            Clinically-proven
-            <br />
-            weight loss.{" "}
-            <span style={{
-              color: C.saffron,
-              position: "relative" as const,
-            }}>
-              Doctor-
-              <br />
-              prescribed.
+            Lose 10–15% weight with{" "}
+            <span style={{ color: C.saffron }}>
+              prescription medication.
             </span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle — makes USP crystal clear */}
           <p style={{
             fontSize: "17px",
             lineHeight: 1.7,
             color: C.textSecondary,
-            maxWidth: "460px",
-            marginBottom: "36px",
+            maxWidth: "480px",
+            marginBottom: "16px",
             fontFamily: "'Plus Jakarta Sans', sans-serif",
           }}>
-            Licensed Indian doctors prescribe FDA-approved medications, delivered to your door. Lose 10–15% body weight in 6 months.
+            Indian doctors prescribe GLP-1 medications (Semaglutide, Liraglutide) — clinically proven to reduce body weight. Delivered to your door with ongoing medical supervision.
           </p>
+
+          {/* USP pills */}
+          <div style={{
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap" as const,
+            marginBottom: "32px",
+          }}>
+            {["GLP-1 Medication", "Doctor-prescribed", "25-min consultation"].map((pill, i) => (
+              <span key={i} style={{
+                padding: "6px 14px",
+                borderRadius: "8px",
+                fontSize: "13px",
+                fontWeight: 600,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                background: i === 0 ? C.saffronLight : C.bgPrimary,
+                color: i === 0 ? C.saffronDark : C.textSecondary,
+                border: `1px solid ${i === 0 ? C.saffron + '30' : C.borderLight}`,
+              }}>
+                {pill}
+              </span>
+            ))}
+          </div>
 
           {/* CTA row */}
           <div style={{ display: "flex", gap: "12px", width: "100%", maxWidth: "460px", marginBottom: "36px", flexWrap: "wrap" as const }}>

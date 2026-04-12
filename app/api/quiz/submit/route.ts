@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     const bmi = height && weight ? weight / (height * height) : 0;
     const weightToLose = weight && target ? weight - target : 0;
-    const recommendedProgram = bmi > 27 ? 'GLP-1 Program' : 'Starter Program';
+    const recommendedProgram = bmi > 27 ? 'Medication Plan' : 'Starter Program';
 
     // Save or update health profile
     const { error: healthError } = await supabase

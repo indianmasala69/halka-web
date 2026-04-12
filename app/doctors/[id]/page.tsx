@@ -395,7 +395,7 @@ export default function DoctorProfile() {
                 Book a consultation
               </h3>
               <p style={{ fontSize: "13px", color: C.textMuted, marginBottom: "20px", lineHeight: 1.5 }}>
-                15-min video call. Get a personalized treatment plan.
+                25-min video call. Get a personalized treatment plan.
               </p>
 
               <div style={{
@@ -411,7 +411,7 @@ export default function DoctorProfile() {
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
                   <span style={{ fontSize: "13px", color: C.textMuted }}>Duration</span>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: C.textPrimary }}>15 minutes</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: C.textPrimary }}>25 minutes</span>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <span style={{ fontSize: "13px", color: C.textMuted }}>Mode</span>
