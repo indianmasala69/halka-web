@@ -94,58 +94,60 @@ export default function Testimonials() {
             }}>
               {/* Top section: Patient info + rating */}
               <div style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "14px",
                 padding: "20px 24px 16px",
                 borderBottom: `1px solid ${C.borderLight}`,
               }}>
-                <img
-                  src={t.photo}
-                  alt={t.name}
-                  style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: "50%",
-                    objectFit: "cover" as const,
-                    flexShrink: 0,
-                    border: `2px solid ${C.borderLight}`,
-                  }}
-                />
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2px" }}>
-                    <span style={{
-                      fontFamily: "'Outfit', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "15px",
-                      color: C.textPrimary,
-                    }}>
-                      {t.name}
-                    </span>
-                    <span style={{
-                      background: C.green,
-                      color: C.white,
-                      fontSize: "9px",
-                      fontWeight: 700,
-                      padding: "2px 6px",
-                      borderRadius: "3px",
-                      textTransform: "uppercase" as const,
-                      letterSpacing: "0.5px",
-                    }}>
-                      Verified
-                    </span>
-                  </div>
-                  <span style={{ fontSize: "13px", color: C.textMuted }}>
-                    {t.age}, {t.city}
-                  </span>
-                </div>
-                {/* Star rating */}
-                <div style={{ display: "flex", gap: "1px", flexShrink: 0 }}>
+                {/* Stars row */}
+                <div style={{ display: "flex", gap: "2px", marginBottom: "14px" }}>
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <svg key={j} width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B">
+                    <svg key={j} width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
+                </div>
+                {/* Patient row */}
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: "50%",
+                      objectFit: "cover" as const,
+                      flexShrink: 0,
+                      border: `2px solid ${C.borderLight}`,
+                    }}
+                  />
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <span style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "15px",
+                        color: C.textPrimary,
+                        whiteSpace: "nowrap" as const,
+                      }}>
+                        {t.name}
+                      </span>
+                      <span style={{
+                        background: C.green,
+                        color: C.white,
+                        fontSize: "9px",
+                        fontWeight: 700,
+                        padding: "2px 6px",
+                        borderRadius: "3px",
+                        textTransform: "uppercase" as const,
+                        letterSpacing: "0.5px",
+                        flexShrink: 0,
+                      }}>
+                        Verified
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: C.textMuted }}>
+                      {t.age}, {t.city}
+                    </span>
+                  </div>
                 </div>
               </div>
 
