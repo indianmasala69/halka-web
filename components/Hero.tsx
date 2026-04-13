@@ -50,18 +50,18 @@ export default function Hero({ onQuiz }: HeroProps) {
           width: 100%;
           height: 6px;
           border-radius: 3px;
-          background: ${C.borderLight};
+          background: linear-gradient(to right, ${C.saffron}22, ${C.borderLight});
           outline: none;
           cursor: pointer;
         }
         .hero-calc-slider::-webkit-slider-thumb {
           -webkit-appearance: none;
           appearance: none;
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
           background: ${C.saffron};
-          box-shadow: 0 2px 8px rgba(255,107,44,0.4);
+          box-shadow: 0 2px 10px rgba(255,107,44,0.4), 0 0 0 4px rgba(255,107,44,0.12);
           cursor: pointer;
           transition: transform 0.15s ease;
         }
@@ -69,25 +69,22 @@ export default function Hero({ onQuiz }: HeroProps) {
           transform: scale(1.15);
         }
         .hero-calc-slider::-moz-range-thumb {
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
           background: ${C.saffron};
-          box-shadow: 0 2px 8px rgba(255,107,44,0.4);
+          box-shadow: 0 2px 10px rgba(255,107,44,0.4), 0 0 0 4px rgba(255,107,44,0.12);
           border: none;
           cursor: pointer;
         }
         .hero-calc-link:hover {
           color: ${C.saffron} !important;
         }
-        @media (max-width: 767px) {
-          .hero-cta-row { flex-direction: column !important; }
-          .hero-cta-row > button { flex: none !important; width: 100% !important; }
-          .hero-cta-row > button:last-child { width: 100% !important; white-space: normal !important; }
-        }
         @media (max-width: 899px) {
           .hero-layout { flex-direction: column !important; text-align: center !important; }
           .hero-left { align-items: center !important; }
+          .hero-headline { text-align: center !important; }
+          .hero-subtitle { text-align: center !important; }
           .hero-trust-bar { justify-content: center !important; }
           .hero-cta { max-width: 100% !important; }
           .hero-right { min-height: 360px !important; }
@@ -95,6 +92,8 @@ export default function Hero({ onQuiz }: HeroProps) {
           .hero-float-patients { top: 16px !important; right: 16px !important; left: auto !important; }
           .hero-float-doctor { display: none !important; }
           .hero-calc-card { align-self: center !important; }
+          .hero-usp-pills { justify-content: center !important; }
+          .hero-whatsapp-wrap { text-align: center !important; }
         }
         @media (max-width: 767px) {
           .hero-section { padding: 80px 16px 40px !important; min-height: auto !important; }
@@ -105,7 +104,7 @@ export default function Hero({ onQuiz }: HeroProps) {
           .hero-float-patients { top: 12px !important; right: 12px !important; left: auto !important; padding: 12px 14px !important; }
           .hero-float-rating > div:first-child,
           .hero-float-patients > div:first-child { width: 36px !important; height: 36px !important; }
-          .hero-calc-card { padding: 14px 16px !important; }
+          .hero-calc-card { padding: 16px 18px !important; }
           .hero-left { min-width: 0 !important; }
         }
         @media (max-width: 480px) {
@@ -153,73 +152,56 @@ export default function Hero({ onQuiz }: HeroProps) {
         <div
           className="hero-left"
           style={{
-            flex: "1 1 480px",
+            flex: "1 1 520px",
             minWidth: "300px",
             display: "flex",
             flexDirection: "column" as const,
             alignItems: "flex-start",
           }}
         >
-          {/* Badge */}
-          <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            background: C.greenLight,
-            padding: "8px 18px",
-            borderRadius: "50px",
-            marginBottom: "28px",
-            fontSize: "13px",
-            fontWeight: 600,
-            color: C.green,
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}>
-            <span style={{
-              width: 7,
-              height: 7,
-              borderRadius: "50%",
-              background: C.green,
-              boxShadow: `0 0 6px ${C.green}`,
-              animation: "pulse 2s ease infinite",
-            }} />
-            Trusted by 10,000+ Indians
-          </div>
-
           {/* Headline */}
-          <h1 style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 800,
-            fontSize: "clamp(36px, 5vw, 56px)",
-            lineHeight: 1.08,
-            letterSpacing: "-2px",
-            color: C.textPrimary,
-            marginBottom: "20px",
-          }}>
-            Lose 10–15% weight with{" "}
-            <span style={{ color: C.saffron }}>
-              prescription medication.
-            </span>
+          <h1
+            className="hero-headline"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "clamp(44px, 6vw, 72px)",
+              lineHeight: 1.05,
+              letterSpacing: "-2.5px",
+              color: C.textPrimary,
+              marginBottom: "24px",
+              textAlign: "left",
+            }}
+          >
+            <span style={{ fontWeight: 400 }}>Feel </span>
+            <span style={{ fontWeight: 800 }}>halka.</span>
           </h1>
 
-          {/* Subtitle — makes USP crystal clear */}
-          <p style={{
-            fontSize: "17px",
-            lineHeight: 1.7,
-            color: C.textSecondary,
-            maxWidth: "480px",
-            marginBottom: "16px",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}>
-            Indian doctors prescribe GLP-1 medications (Semaglutide, Liraglutide) — clinically proven to reduce body weight. Delivered to your door with ongoing medical supervision.
+          {/* Subtitle */}
+          <p
+            className="hero-subtitle"
+            style={{
+              fontSize: "18px",
+              lineHeight: 1.7,
+              color: C.textSecondary,
+              maxWidth: "480px",
+              marginBottom: "20px",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              textAlign: "left",
+            }}
+          >
+            Prescription GLP-1 medication. Doctor-supervised. Delivered to your door.
           </p>
 
           {/* USP pills */}
-          <div style={{
-            display: "flex",
-            gap: "8px",
-            flexWrap: "wrap" as const,
-            marginBottom: "32px",
-          }}>
+          <div
+            className="hero-usp-pills"
+            style={{
+              display: "flex",
+              gap: "8px",
+              flexWrap: "wrap" as const,
+              marginBottom: "36px",
+            }}
+          >
             {["GLP-1 Medication", "Doctor-prescribed", "25-min consultation"].map((pill, i) => (
               <span key={i} style={{
                 padding: "6px 14px",
@@ -236,8 +218,8 @@ export default function Hero({ onQuiz }: HeroProps) {
             ))}
           </div>
 
-          {/* CTA row */}
-          <div className="hero-cta-row" style={{ display: "flex", gap: "12px", width: "100%", maxWidth: "460px", marginBottom: "36px", flexWrap: "wrap" as const }}>
+          {/* CTA */}
+          <div style={{ width: "100%", maxWidth: "460px", marginBottom: "16px" }}>
             <button
               className="hero-cta"
               onClick={onQuiz}
@@ -245,7 +227,7 @@ export default function Hero({ onQuiz }: HeroProps) {
                 background: C.saffron,
                 color: C.white,
                 border: "none",
-                padding: "17px 36px",
+                padding: "17px 40px",
                 borderRadius: "12px",
                 fontWeight: 700,
                 fontSize: "16px",
@@ -253,7 +235,8 @@ export default function Hero({ onQuiz }: HeroProps) {
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 transition: "all 0.25s ease",
                 minHeight: "56px",
-                flex: "1 1 260px",
+                width: "100%",
+                maxWidth: "320px",
                 boxShadow: "0 4px 18px rgba(255,107,44,0.35)",
                 display: "flex",
                 alignItems: "center",
@@ -266,33 +249,10 @@ export default function Hero({ onQuiz }: HeroProps) {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
-            <button
-              onClick={() => {
-                const el = document.querySelector('.doc-grid');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }}
-              style={{
-                background: "transparent",
-                color: C.textPrimary,
-                border: `1.5px solid ${C.border}`,
-                padding: "17px 28px",
-                borderRadius: "12px",
-                fontWeight: 600,
-                fontSize: "15px",
-                cursor: "pointer",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                transition: "all 0.25s ease",
-                minHeight: "56px",
-                flex: "0 1 auto",
-                whiteSpace: "nowrap" as const,
-              }}
-            >
-              Meet Our Doctors
-            </button>
           </div>
 
           {/* WhatsApp link */}
-          <div style={{ marginTop: "-20px", marginBottom: "24px", width: "100%", maxWidth: "460px", textAlign: "center" }}>
+          <div className="hero-whatsapp-wrap" style={{ marginBottom: "32px", width: "100%", maxWidth: "460px", textAlign: "left" }}>
             <a
               href="https://wa.me/919876543210?text=Hi%20Halka%2C%20I%27m%20interested%20in%20your%20GLP-1%20weight%20loss%20program"
               target="_blank"
@@ -318,45 +278,56 @@ export default function Hero({ onQuiz }: HeroProps) {
             </a>
           </div>
 
-          {/* Weight Loss Calculator */}
+          {/* Weight Loss Calculator — premium card */}
           <div
             className="hero-calc-card"
             style={{
-              background: C.bgPrimary,
-              border: `1px solid ${C.borderLight}`,
-              borderRadius: "14px",
-              padding: "18px 22px",
+              background: C.white,
+              border: `1px solid ${C.border}`,
+              borderRadius: "16px",
+              padding: "20px 24px",
               maxWidth: "460px",
               width: "100%",
+              boxShadow: `0 4px 20px rgba(0,0,0,0.06)`,
             }}
           >
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              marginBottom: "16px",
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.saffron} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3v17M8 7l4-4 4 4" />
+                <rect x="4" y="14" width="16" height="6" rx="2" />
+              </svg>
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 700,
+                fontSize: "14px",
+                color: C.textPrimary,
+                letterSpacing: "-0.3px",
+              }}>
+                Weight Loss Calculator
+              </span>
+            </div>
+
             {/* Slider row */}
             <div style={{
               display: "flex",
               alignItems: "center",
               gap: "14px",
-              marginBottom: "10px",
+              marginBottom: "14px",
             }}>
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                flexShrink: 0,
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 700,
+                fontSize: "15px",
+                color: C.textPrimary,
+                minWidth: "52px",
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.saffron} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 3v17M8 7l4-4 4 4" />
-                  <rect x="4" y="14" width="16" height="6" rx="2" />
-                </svg>
-                <span style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "15px",
-                  color: C.textPrimary,
-                  minWidth: "52px",
-                }}>
-                  {weight} kg
-                </span>
-              </div>
+                {weight} kg
+              </span>
               <input
                 className="hero-calc-slider"
                 type="range"
@@ -370,12 +341,15 @@ export default function Hero({ onQuiz }: HeroProps) {
 
             {/* Result */}
             <div style={{
+              background: C.bgPrimary,
+              borderRadius: "10px",
+              padding: "14px 16px",
+              marginBottom: "14px",
               display: "flex",
-              alignItems: "baseline",
+              alignItems: "center",
               justifyContent: "space-between",
               flexWrap: "wrap" as const,
               gap: "8px",
-              marginBottom: "12px",
             }}>
               <p style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -408,7 +382,7 @@ export default function Hero({ onQuiz }: HeroProps) {
                   flexShrink: 0,
                 }}
               >
-                See your plan
+                Start Free Assessment
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
@@ -418,7 +392,7 @@ export default function Hero({ onQuiz }: HeroProps) {
             {/* Clinical note + trust items */}
             <div style={{
               borderTop: `1px solid ${C.borderLight}`,
-              paddingTop: "10px",
+              paddingTop: "12px",
               display: "flex",
               flexWrap: "wrap" as const,
               alignItems: "center",
@@ -462,7 +436,7 @@ export default function Hero({ onQuiz }: HeroProps) {
         <div
           className="hero-right hero-img-wrap"
           style={{
-            flex: "1 1 520px",
+            flex: "1 1 480px",
             minWidth: "320px",
             position: "relative" as const,
             minHeight: "520px",
@@ -581,7 +555,7 @@ export default function Hero({ onQuiz }: HeroProps) {
                 color: C.textPrimary,
                 lineHeight: 1,
               }}>
-                4.8/5
+                4.8
               </div>
               <div style={{
                 fontSize: "12px",
@@ -589,7 +563,7 @@ export default function Hero({ onQuiz }: HeroProps) {
                 fontWeight: 500,
                 marginTop: "2px",
               }}>
-                725+ reviews
+                Average rating
               </div>
             </div>
           </div>
@@ -638,7 +612,7 @@ export default function Hero({ onQuiz }: HeroProps) {
                 color: C.textPrimary,
                 lineHeight: 1,
               }}>
-                10,000+
+                2,847+
               </div>
               <div style={{
                 fontSize: "12px",

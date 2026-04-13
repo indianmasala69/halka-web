@@ -1,15 +1,11 @@
 'use client';
 
 import { COLOR_SYSTEM as C } from '@/lib/colors';
-import { useState } from 'react';
-
 interface NavProps {
   onQuiz: () => void;
 }
 
 export default function Nav({ onQuiz }: NavProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <nav className="halka-nav" style={{
       position: "fixed",
@@ -30,9 +26,9 @@ export default function Nav({ onQuiz }: NavProps) {
       <style>{`
         @media (max-width: 767px) {
           .halka-nav { padding: 0 12px !important; height: 56px !important; }
-          .halka-nav-badge { display: none !important; }
           .halka-nav-cta { padding: 8px 14px !important; font-size: 13px !important; }
-          .halka-nav-logo { font-size: 24px !important; }
+          .halka-nav-logo-feel { font-size: 22px !important; }
+          .halka-nav-logo-halka { font-size: 24px !important; }
           .halka-nav-hindi { font-size: 12px !important; }
         }
         @media (max-width: 480px) {
@@ -41,8 +37,17 @@ export default function Nav({ onQuiz }: NavProps) {
         }
       `}</style>
       {/* Logo */}
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <span className="halka-nav-logo" style={{
+      <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+        <span className="halka-nav-logo-feel" style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontWeight: 400,
+          fontSize: "26px",
+          color: C.textSecondary,
+          letterSpacing: "-0.5px",
+        }}>
+          feel
+        </span>
+        <span className="halka-nav-logo-halka" style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 800,
           fontSize: "28px",
@@ -59,21 +64,6 @@ export default function Nav({ onQuiz }: NavProps) {
           marginTop: "2px",
         }}>
           हल्का
-        </span>
-        <span className="halka-nav-badge" style={{
-          fontSize: "10px",
-          fontWeight: 700,
-          color: C.green,
-          textTransform: "uppercase" as const,
-          letterSpacing: "1px",
-          marginLeft: "6px",
-          padding: "3px 8px",
-          background: C.greenLight,
-          borderRadius: "4px",
-          marginTop: "2px",
-          border: `1px solid ${C.green}20`,
-        }}>
-          Doctor-prescribed
         </span>
       </div>
 

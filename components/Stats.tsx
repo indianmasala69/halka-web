@@ -6,6 +6,8 @@ const stats = [
   {
     value: "2,847+",
     label: "Patients treated",
+    accent: C.saffron,
+    bg: C.saffronLight,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={C.saffron} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -18,6 +20,8 @@ const stats = [
   {
     value: "94%",
     label: "See results in 8 weeks",
+    accent: C.green,
+    bg: C.greenLight,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
@@ -28,6 +32,8 @@ const stats = [
   {
     value: "4.8/5",
     label: "Patient satisfaction",
+    accent: C.saffron,
+    bg: C.saffronLight,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill={C.saffron} stroke="none">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -35,11 +41,15 @@ const stats = [
     ),
   },
   {
-    value: "12+",
-    label: "Experienced doctors",
+    value: "3",
+    label: "Specialist doctors",
+    accent: C.green,
+    bg: C.greenLight,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+        <path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4" />
+        <circle cx="20" cy="10" r="2" />
       </svg>
     ),
   },
@@ -62,6 +72,7 @@ export default function Stats() {
         @media (max-width: 767px) {
           .halka-stats-section { padding: 36px 16px !important; }
           .halka-stats-grid { gap: 24px 12px !important; }
+          .halka-stat-divider { display: none !important; }
         }
         @media (max-width: 480px) {
           .halka-stats-section { padding: 28px 12px !important; }
@@ -81,19 +92,34 @@ export default function Stats() {
           <div
             key={i}
             style={{
-              textAlign: "center",
-              padding: "8px 0",
+              position: "relative" as const,
               display: "flex",
               flexDirection: "column" as const,
               alignItems: "center",
               gap: "8px",
+              textAlign: "center",
+              padding: i % 2 === 1 ? "12px 0 12px 16px" : "12px 16px 12px 0",
             } as any}
           >
+            {/* Vertical divider between odd/even pairs on desktop */}
+            {i % 2 === 1 && i < stats.length && (
+              <div
+                className="halka-stat-divider"
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "10%",
+                  height: "80%",
+                  width: "1px",
+                  background: `linear-gradient(to bottom, transparent, ${C.border}, transparent)`,
+                }}
+              />
+            )}
             <div style={{
               width: "44px",
               height: "44px",
               borderRadius: "12px",
-              background: i % 2 === 0 ? C.saffronLight : C.greenLight,
+              background: stat.bg,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -104,7 +130,7 @@ export default function Stats() {
               fontFamily: "'Outfit', sans-serif",
               fontWeight: 800,
               fontSize: "clamp(28px, 4vw, 40px)",
-              color: C.saffron,
+              color: stat.accent,
               lineHeight: 1.1,
               marginBottom: "2px",
             }}>

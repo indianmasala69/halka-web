@@ -7,16 +7,11 @@ import Nav from './Nav';
 import Hero from './Hero';
 import Stats from './Stats';
 import HowItWorks from './HowItWorks';
-import BeforeAfter from './BeforeAfter';
-import Testimonials from './Testimonials';
 import Doctors from './Doctors';
-import ProblemEducation from './ProblemEducation';
-import MedicationInfo from './MedicationInfo';
+import SocialProof from './SocialProof';
 import ComparisonTable from './ComparisonTable';
 import Pricing from './Pricing';
-import Referral from './Referral';
-import AppPitch from './AppPitch';
-import Community from './Community';
+import TheScience from './TheScience';
 import FAQ from './FAQ';
 import Trust from './Trust';
 import FinalCTA from './FinalCTA';
@@ -43,16 +38,11 @@ export default function HalkaApp({ user }: HalkaAppProps) {
       <Hero onQuiz={() => setQuiz(true)} />
       <Stats />
       <HowItWorks />
-      <BeforeAfter />
-      <Testimonials />
       <Doctors />
-      <ProblemEducation />
-      <MedicationInfo />
+      <SocialProof />
       <ComparisonTable onQuiz={() => setQuiz(true)} />
       <Pricing onQuiz={() => setQuiz(true)} />
-      <Referral />
-      <AppPitch />
-      <Community />
+      <TheScience />
       <FAQ />
       <Trust />
       <FinalCTA onQuiz={() => setQuiz(true)} />

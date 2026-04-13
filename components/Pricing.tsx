@@ -330,7 +330,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                         : '0 2px 8px rgba(255, 107, 44, 0.15)',
                     } as any}
                   >
-                    Get Started
+                    Start Free Assessment
                   </button>
 
                   <p

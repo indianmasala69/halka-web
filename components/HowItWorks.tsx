@@ -63,50 +63,36 @@ export default function HowItWorks() {
       `}</style>
       <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "64px" }}>
+        <div style={{ display: "flex", alignItems: "stretch", gap: "20px", marginBottom: "64px" }}>
           <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "10px",
-            background: C.saffronLight,
-            padding: "8px 20px",
-            borderRadius: "24px",
-            marginBottom: "20px",
-          }}>
-            <span style={{
-              width: 6, height: 6, borderRadius: "50%",
-              background: C.saffron,
-            }} />
-            <span style={{
-              fontSize: "13px", fontWeight: 700, color: C.saffron,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              textTransform: "uppercase" as const,
-              letterSpacing: "1px",
+            width: "4px",
+            borderRadius: "2px",
+            background: C.saffron,
+            flexShrink: 0,
+          }} />
+          <div>
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(32px, 5vw, 48px)",
+              color: C.textPrimary,
+              letterSpacing: "-1.5px",
+              lineHeight: 1.1,
+              marginBottom: "16px",
             }}>
-              How it works
-            </span>
+              Four steps to a<br />healthier you
+            </h2>
+            <p style={{
+              fontSize: "17px",
+              color: C.textSecondary,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              maxWidth: "460px",
+              lineHeight: 1.6,
+              margin: 0,
+            }}>
+              Doctor-guided from start to finish. No guesswork.
+            </p>
           </div>
-          <h2 style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 800,
-            fontSize: "clamp(32px, 5vw, 48px)",
-            color: C.textPrimary,
-            letterSpacing: "-1.5px",
-            lineHeight: 1.1,
-            marginBottom: "16px",
-          }}>
-            Four steps to a<br />healthier you
-          </h2>
-          <p style={{
-            fontSize: "17px",
-            color: C.textSecondary,
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            maxWidth: "460px",
-            margin: "0 auto",
-            lineHeight: 1.6,
-          }}>
-            Doctor-guided from start to finish. No guesswork.
-          </p>
         </div>
 
         {/* Steps */}

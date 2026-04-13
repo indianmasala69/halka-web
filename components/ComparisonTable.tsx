@@ -446,19 +446,8 @@ export default function ComparisonTable({ onQuiz }: ComparisonTableProps) {
               boxShadow: '0 4px 14px rgba(255, 107, 44, 0.3)',
             } as any}
           >
-            Start your doctor-supervised journey
+            Start Free Assessment
           </button>
-          <p
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: '13px',
-              color: C.textMuted,
-              marginTop: '14px',
-              marginBottom: 0,
-            } as any}
-          >
-            Free assessment. No commitment required.
-          </p>
         </div>
       </div>
     </section>
