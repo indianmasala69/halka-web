@@ -47,7 +47,7 @@ function generateGoogleCalendarUrl(
   const location = encodeURIComponent(meetLink);
   const dates = `${fmt(start)}/${fmt(end)}`;
 
-  return `https://calendar.google.com/calendar/event?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+  return `https://calendar.google.com/calendar/event?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}&ctz=Asia/Kolkata`;
 }
 
 /* ───────── Doctor Data ───────── */
@@ -68,7 +68,7 @@ interface Doctor {
 
 const DOCTORS: Doctor[] = [
   {
-    id: 'dr-sharma',
+    id: 'dr-anand-sharma',
     name: 'Dr. Anand Sharma',
     initials: 'AS',
     credential: 'MD Internal Medicine',
@@ -82,7 +82,7 @@ const DOCTORS: Doctor[] = [
     gradientTo: '#2D3F5E',
   },
   {
-    id: 'dr-nair',
+    id: 'dr-priya-nair',
     name: 'Dr. Priya Nair',
     initials: 'PN',
     credential: 'MD Endocrinology',
@@ -96,9 +96,9 @@ const DOCTORS: Doctor[] = [
     gradientTo: '#065C38',
   },
   {
-    id: 'dr-patel',
+    id: 'dr-meenakshi-iyer',
     name: 'Dr. Meenakshi Iyer',
-    initials: 'VP',
+    initials: 'MI',
     credential: 'DNB Medicine',
     hospital: 'Kokilaben Hospital, Mumbai',
     experience: 18,

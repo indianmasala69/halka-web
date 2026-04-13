@@ -42,7 +42,17 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section style={{ background: C.bgPrimary, padding: "80px 24px" }}>
+    <section id="faq" className="halka-faq-section" style={{ background: C.bgPrimary, padding: "80px 24px" }}>
+      <style>{`
+        @media (max-width: 767px) {
+          .halka-faq-section { padding: 60px 16px !important; }
+        }
+        @media (max-width: 480px) {
+          .halka-faq-section { padding: 48px 12px !important; }
+          .halka-faq-btn { padding: 14px 16px !important; }
+          .halka-faq-answer { padding: 0 16px 14px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: "720px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <h2 style={{
@@ -75,6 +85,7 @@ export default function FAQ() {
                 }}
               >
                 <button
+                  className="halka-faq-btn"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   style={{
                     width: "100%",
@@ -110,7 +121,7 @@ export default function FAQ() {
                   </span>
                 </button>
                 {isOpen && (
-                  <div style={{
+                  <div className="halka-faq-answer" style={{
                     padding: "0 20px 18px",
                   }}>
                     <p style={{

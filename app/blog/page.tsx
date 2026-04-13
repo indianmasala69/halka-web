@@ -181,9 +181,8 @@ export default function BlogPage() {
             }
           `}</style>
           {filtered.map((post, i) => (
-            <a
+            <div
               key={i}
-              href="#"
               className="blog-grid"
               style={{
                 background: C.white,
@@ -195,6 +194,7 @@ export default function BlogPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+                cursor: 'pointer',
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd;
@@ -293,7 +293,7 @@ export default function BlogPage() {
                   </span>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 

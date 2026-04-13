@@ -5,7 +5,7 @@ import { doctors } from '@/lib/doctors';
 
 export default function Doctors() {
   return (
-    <section style={{ background: C.white, padding: "100px 24px", overflow: "hidden" }}>
+    <section className="halka-doctors-section" style={{ background: C.white, padding: "100px 24px", overflow: "hidden" }}>
       <style>{`
         .doc-card {
           transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
@@ -28,7 +28,13 @@ export default function Doctors() {
           border-color: ${C.saffron} !important;
         }
         @media (max-width: 767px) {
-          .doc-grid { grid-template-columns: 1fr !important; }
+          .halka-doctors-section { padding: 60px 16px !important; }
+          .doc-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin: 0 auto !important; }
+          .doc-card .doc-photo-wrap { height: 220px !important; }
+          .doc-card .doc-info { padding: 20px 18px !important; }
+        }
+        @media (max-width: 480px) {
+          .halka-doctors-section { padding: 48px 12px !important; }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
           .doc-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -107,7 +113,7 @@ export default function Doctors() {
               }}
             >
               {/* Photo section */}
-              <div style={{
+              <div className="doc-photo-wrap" style={{
                 position: "relative" as const,
                 overflow: "hidden",
                 height: "260px",
@@ -179,7 +185,7 @@ export default function Doctors() {
               </div>
 
               {/* Info section */}
-              <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" as const }}>
+              <div className="doc-info" style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" as const }}>
                 <h3 style={{
                   fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
@@ -189,9 +195,38 @@ export default function Doctors() {
                 }}>
                   {d.name}
                 </h3>
-                <p style={{ fontSize: "13px", color: C.textSecondary, marginBottom: "2px" }}>
+                <p style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: C.textSecondary,
+                  marginBottom: "2px",
+                }}>
+                  {d.specialization}
+                </p>
+                <p style={{ fontSize: "12px", color: C.textMuted, marginBottom: "6px" }}>
                   {d.credentials}
                 </p>
+                {/* Hospital affiliation badge */}
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  background: C.bgWarm,
+                  padding: "3px 10px 3px 7px",
+                  borderRadius: "20px",
+                  marginBottom: "6px",
+                }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={C.textMuted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M12 7v10" />
+                    <path d="M7 12h10" />
+                  </svg>
+                  <span style={{ fontSize: "11px", color: C.textMuted, fontWeight: 600 }}>{d.affiliation}</span>
+                </div>
+                {/* Experience line */}
+                <div style={{ fontSize: "12px", color: C.textMuted, marginBottom: "6px" }}>
+                  {d.experience}+ years experience
+                </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "16px" }}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={C.textMuted} strokeWidth="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />

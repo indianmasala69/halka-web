@@ -11,7 +11,7 @@ export default function Nav({ onQuiz }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav style={{
+    <nav className="halka-nav" style={{
       position: "fixed",
       top: 0,
       left: 0,
@@ -27,9 +27,22 @@ export default function Nav({ onQuiz }: NavProps) {
       justifyContent: "space-between",
       alignItems: "center",
     } as any}>
+      <style>{`
+        @media (max-width: 767px) {
+          .halka-nav { padding: 0 12px !important; height: 56px !important; }
+          .halka-nav-badge { display: none !important; }
+          .halka-nav-cta { padding: 8px 14px !important; font-size: 13px !important; }
+          .halka-nav-logo { font-size: 24px !important; }
+          .halka-nav-hindi { font-size: 12px !important; }
+        }
+        @media (max-width: 480px) {
+          .halka-nav { padding: 0 10px !important; }
+          .halka-nav-cta { padding: 7px 12px !important; font-size: 12px !important; min-height: 40px !important; }
+        }
+      `}</style>
       {/* Logo */}
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <span style={{
+        <span className="halka-nav-logo" style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 800,
           fontSize: "28px",
@@ -38,7 +51,7 @@ export default function Nav({ onQuiz }: NavProps) {
         }}>
           halka
         </span>
-        <span style={{
+        <span className="halka-nav-hindi" style={{
           fontFamily: "'Noto Sans Devanagari', sans-serif",
           fontWeight: 600,
           fontSize: "14px",
@@ -47,7 +60,7 @@ export default function Nav({ onQuiz }: NavProps) {
         }}>
           हल्का
         </span>
-        <span style={{
+        <span className="halka-nav-badge" style={{
           fontSize: "10px",
           fontWeight: 700,
           color: C.green,
@@ -66,6 +79,7 @@ export default function Nav({ onQuiz }: NavProps) {
 
       {/* Desktop CTA */}
       <button
+        className="halka-nav-cta"
         onClick={onQuiz}
         style={{
           background: C.saffron,
@@ -79,6 +93,7 @@ export default function Nav({ onQuiz }: NavProps) {
           fontFamily: "'Plus Jakarta Sans', sans-serif",
           transition: "all 0.2s ease",
           minHeight: "44px",
+          flexShrink: 0,
         } as any}
       >
         Start Assessment

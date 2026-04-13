@@ -29,22 +29,6 @@ function CheckIcon() {
   );
 }
 
-function RingIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ flexShrink: 0 } as any}
-    >
-      <circle cx="9" cy="9" r="7" stroke="#9333EA" strokeWidth="1.5" fill="none" />
-      <circle cx="9" cy="5" r="2" fill="#9333EA" opacity="0.7" />
-    </svg>
-  );
-}
-
 export default function Pricing({ onQuiz }: PricingProps) {
   return (
     <section
@@ -103,6 +87,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
 
         {/* Cards Grid */}
         <div
+          className="halka-pricing-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
@@ -116,6 +101,12 @@ export default function Pricing({ onQuiz }: PricingProps) {
             }
             .halka-pricing-card:hover {
               transform: translateY(-4px);
+            }
+            .halka-pricing-card--popular {
+              transform: scale(1.02);
+            }
+            .halka-pricing-card--popular:hover {
+              transform: scale(1.02) translateY(-4px);
             }
             .halka-pricing-cta {
               transition: background 0.2s ease, transform 0.15s ease;
@@ -133,7 +124,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
             return (
               <div
                 key={pkg.id}
-                className="halka-pricing-card"
+                className={`halka-pricing-card${isPopular ? ' halka-pricing-card--popular' : ''}`}
                 style={{
                   background: C.white,
                   borderRadius: '20px',
@@ -145,7 +136,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                     : `1px solid ${C.border}`,
                   position: 'relative',
                   boxShadow: isPopular
-                    ? `0 8px 32px rgba(255, 107, 44, 0.12), ${C.shadowMd}`
+                    ? `0 12px 40px rgba(255, 107, 44, 0.18), 0 4px 16px rgba(255, 107, 44, 0.1)`
                     : C.shadowSm,
                   overflow: 'hidden',
                 } as any}
@@ -153,7 +144,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                 {/* Top Accent Bar */}
                 <div
                   style={{
-                    height: '4px',
+                    height: isPopular ? '6px' : '4px',
                     background: isPopular
                       ? `linear-gradient(90deg, ${C.saffron}, ${C.saffronHover})`
                       : isPreWedding
@@ -170,9 +161,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                   {isPopular && (
                     <div
                       style={{
-                        position: 'absolute',
-                        top: '16px',
-                        right: '16px',
+                        display: 'inline-block',
                         background: C.saffron,
                         color: C.white,
                         fontSize: '10px',
@@ -182,6 +171,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                         borderRadius: '100px',
                         letterSpacing: '0.6px',
                         textTransform: 'uppercase' as const,
+                        marginBottom: '10px',
                       } as any}
                     >
                       MOST POPULAR
@@ -192,12 +182,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                   {isPreWedding && (
                     <div
                       style={{
-                        position: 'absolute',
-                        top: '16px',
-                        right: '16px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '5px',
+                        display: 'inline-block',
                         background: '#F3E8FF',
                         color: '#7C3AED',
                         fontSize: '10px',
@@ -205,11 +190,11 @@ export default function Pricing({ onQuiz }: PricingProps) {
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         padding: '5px 12px',
                         borderRadius: '100px',
-                        letterSpacing: '0.4px',
+                        letterSpacing: '0.6px',
                         textTransform: 'uppercase' as const,
+                        marginBottom: '10px',
                       } as any}
                     >
-                      <RingIcon />
                       LIMITED
                     </div>
                   )}
@@ -224,7 +209,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                       marginBottom: '6px',
                       marginTop: 0,
                       lineHeight: 1.3,
-                      paddingRight: isPopular || isPreWedding ? '110px' : '0',
+                      paddingRight: '0',
                     } as any}
                   >
                     {pkg.name}
@@ -276,17 +261,21 @@ export default function Pricing({ onQuiz }: PricingProps) {
                         / {pkg.duration}
                       </span>
                     </div>
-                    <p
+                    <span
                       style={{
+                        display: 'inline-block',
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontSize: '13px',
-                        color: C.textMuted,
-                        marginTop: '6px',
-                        marginBottom: 0,
+                        fontWeight: 600,
+                        color: C.textSecondary,
+                        marginTop: '8px',
+                        background: C.saffronLight,
+                        padding: '4px 10px',
+                        borderRadius: '6px',
                       } as any}
                     >
                       ~{'\u20B9'}{perWeek.toLocaleString('en-IN')}/week
-                    </p>
+                    </span>
                   </div>
 
                   {/* Features */}
@@ -298,7 +287,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
                           display: 'flex',
                           gap: '10px',
                           alignItems: 'flex-start',
-                          marginBottom: j < pkg.features.length - 1 ? '11px' : 0,
+                          marginBottom: j < pkg.features.length - 1 ? '12px' : 0,
                         } as any}
                       >
                         <CheckIcon />
@@ -324,15 +313,13 @@ export default function Pricing({ onQuiz }: PricingProps) {
                       width: '100%',
                       background: isPopular
                         ? `linear-gradient(135deg, ${C.saffron}, ${C.saffronDark})`
-                        : isPreWedding
-                        ? 'linear-gradient(135deg, #7C3AED, #9333EA)'
-                        : C.textPrimary,
+                        : C.saffron,
                       color: C.white,
                       border: 'none',
-                      padding: '15px 24px',
+                      padding: isPopular ? '16px 24px' : '15px 24px',
                       borderRadius: '12px',
                       fontWeight: 600,
-                      fontSize: '15px',
+                      fontSize: isPopular ? '16px' : '15px',
                       cursor: 'pointer',
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       minHeight: '50px',
@@ -340,24 +327,106 @@ export default function Pricing({ onQuiz }: PricingProps) {
                       letterSpacing: '0.2px',
                       boxShadow: isPopular
                         ? '0 4px 14px rgba(255, 107, 44, 0.3)'
-                        : isPreWedding
-                        ? '0 4px 14px rgba(147, 51, 234, 0.25)'
-                        : '0 2px 8px rgba(26, 26, 46, 0.15)',
+                        : '0 2px 8px rgba(255, 107, 44, 0.15)',
                     } as any}
                   >
                     Get Started
                   </button>
+
+                  <p
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: '12px',
+                      color: C.textMuted,
+                      textAlign: 'center' as const,
+                      marginTop: '12px',
+                      marginBottom: 0,
+                    } as any}
+                  >
+                    No hidden fees. Includes free delivery.
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
 
+        {/* Guarantee Badge */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '48px',
+          } as any}
+        >
+          <div
+            style={{
+              maxWidth: '600px',
+              width: '100%',
+              background: C.greenLight,
+              borderRadius: '16px',
+              padding: '28px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              gap: '12px',
+            } as any}
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2L3 7V12C3 17.25 6.75 22.03 12 23C17.25 22.03 21 17.25 21 12V7L12 2Z"
+                fill={C.greenLight}
+                stroke={C.green}
+                strokeWidth="1.8"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.5 12.5L10.5 14.5L15.5 9.5"
+                stroke={C.green}
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <h4
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 700,
+                fontSize: '20px',
+                color: C.greenDark,
+                margin: 0,
+                lineHeight: 1.3,
+              } as any}
+            >
+              30-Day Results Guarantee
+            </h4>
+            <p
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: '15px',
+                color: C.textSecondary,
+                margin: 0,
+                lineHeight: 1.6,
+                maxWidth: '480px',
+              } as any}
+            >
+              If you don&apos;t see measurable progress in 30 days with our program, we&apos;ll refund your money. No questions asked.
+            </p>
+          </div>
+        </div>
+
         {/* Footer Note */}
         <div
           style={{
             textAlign: 'center',
-            marginTop: '48px',
+            marginTop: '24px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -373,7 +442,7 @@ export default function Pricing({ onQuiz }: PricingProps) {
               fontWeight: 500,
             } as any}
           >
-            All packages include a 7-day money-back guarantee
+            All packages include a 30-day results guarantee
           </p>
           <p
             style={{
@@ -390,10 +459,15 @@ export default function Pricing({ onQuiz }: PricingProps) {
 
       {/* Responsive Override */}
       <style>{`
-        @media (max-width: 768px) {
-          #pricing > div > div:nth-child(2) {
-            grid-template-columns: 1fr !important;
-          }
+        @media (max-width: 767px) {
+          #pricing { padding: 60px 16px 60px !important; }
+          .halka-pricing-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin: 0 auto !important; }
+          .halka-pricing-card--popular { transform: none !important; }
+          .halka-pricing-card--popular:hover { transform: translateY(-4px) !important; }
+        }
+        @media (max-width: 480px) {
+          #pricing { padding: 48px 12px 48px !important; }
+          .halka-pricing-card > div:last-child { padding: 24px 18px 22px !important; }
         }
       `}</style>
     </section>

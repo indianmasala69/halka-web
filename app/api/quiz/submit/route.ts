@@ -3,21 +3,23 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
-    const { answers } = await request.json();
+    const { answers, name, phone, email, whatsapp_optin } = await request.json();
 
-    // Get current user session
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    // Get current user session (optional — quiz can be submitted without auth)
+    const { data: { session } } = await supabase.auth.getSession();
 
-    if (sessionError || !session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
+    const userId = session?.user?.id ?? null;
 
-    const userId = session.user?.id;
+    // Calculate health metrics
+    const height = parseFloat(answers.height) / 100;
+    const weight = parseFloat(answers.weight);
+    const target = parseFloat(answers.target);
 
-    // Save quiz response
+    const bmi = height && weight ? weight / (height * height) : 0;
+    const weightToLose = weight && target ? weight - target : 0;
+    const recommendedProgram = bmi > 27 ? 'Medication Plan' : 'Starter Program';
+
+    // Save quiz response (include contact info for unauthenticated users)
     const { data: quizData, error: quizError } = await supabase
       .from('quiz_responses')
       .insert({
@@ -30,6 +32,10 @@ export async function POST(request: NextRequest) {
         conditions: answers.conditions,
         diet_preference: answers.diet,
         commitment_level: answers.commitment,
+        contact_name: name || null,
+        contact_phone: phone || null,
+        contact_email: email || null,
+        whatsapp_optin: whatsapp_optin ?? true,
         created_at: new Date(),
       } as any)
       .select()
@@ -43,30 +49,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Calculate health metrics
-    const height = parseFloat(answers.height) / 100;
-    const weight = parseFloat(answers.weight);
-    const target = parseFloat(answers.target);
+    // Save or update health profile (only for authenticated users)
+    if (userId) {
+      const { error: healthError } = await supabase
+        .from('user_health_profiles')
+        .upsert({
+          user_id: userId,
+          bmi: parseFloat(bmi.toFixed(1)),
+          weight_to_lose_kg: parseFloat(weightToLose.toFixed(1)),
+          recommended_program: recommendedProgram,
+          created_at: new Date(),
+          updated_at: new Date(),
+        } as any);
 
-    const bmi = height && weight ? weight / (height * height) : 0;
-    const weightToLose = weight && target ? weight - target : 0;
-    const recommendedProgram = bmi > 27 ? 'Medication Plan' : 'Starter Program';
-
-    // Save or update health profile
-    const { error: healthError } = await supabase
-      .from('user_health_profiles')
-      .upsert({
-        user_id: userId,
-        bmi: parseFloat(bmi.toFixed(1)),
-        weight_to_lose_kg: parseFloat(weightToLose.toFixed(1)),
-        recommended_program: recommendedProgram,
-        created_at: new Date(),
-        updated_at: new Date(),
-      } as any);
-
-    if (healthError) {
-      console.error('Error saving health profile:', healthError);
-      // Don't fail the whole request if health profile save fails
+      if (healthError) {
+        console.error('Error saving health profile:', healthError);
+        // Don't fail the whole request if health profile save fails
+      }
     }
 
     return NextResponse.json({

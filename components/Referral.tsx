@@ -233,6 +233,7 @@ export default function Referral() {
 
         {/* Referral Code + Actions */}
         <div
+          className="referral-code-box"
           style={{
             background: C.white,
             borderRadius: '20px',
@@ -258,6 +259,7 @@ export default function Referral() {
 
           {/* Code Box */}
           <div
+            className="referral-code-inner"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -270,6 +272,7 @@ export default function Referral() {
             }}
           >
             <span
+              className="referral-code-text"
               style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 800,
@@ -305,6 +308,7 @@ export default function Referral() {
 
           <div>
             <a
+              className="referral-wa-btn"
               href={`https://wa.me/?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -399,10 +403,13 @@ export default function Referral() {
 
       {/* Responsive */}
       <style>{`
-        @media (max-width: 768px) {
-          .referral-steps {
-            grid-template-columns: 1fr !important;
-          }
+        @media (max-width: 767px) {
+          #referral { padding: 60px 16px 60px !important; }
+          .referral-steps { grid-template-columns: 1fr !important; }
+          .referral-code-box { padding: 28px 16px !important; }
+          .referral-code-text { font-size: 18px !important; }
+          .referral-code-inner { flex-direction: column !important; gap: 10px !important; }
+          .referral-wa-btn { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>

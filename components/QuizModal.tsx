@@ -277,14 +277,14 @@ export default function QuizModal({ onClose, user }: QuizModalProps) {
 
       if (!isNaN(currentWeight) && !isNaN(targetWeight)) {
         if (targetWeight >= currentWeight) {
-          // Target is same or higher
-          const diff = currentWeight - targetWeight;
-          if (Math.abs(diff) < 1 && diff <= 0) {
-            // Within 1 kg or equal
-            setWeightWarning("close");
-          } else {
-            setWeightWarning("same_or_higher");
-          }
+          // Target is same or higher than current weight -- not a weight loss goal
+          setWeightWarning("same_or_higher");
+          setInputVal("");
+          return; // Don't advance
+        }
+        if (currentWeight - targetWeight < 2) {
+          // Wants to lose less than 2 kg -- already near ideal weight
+          setWeightWarning("close");
           setInputVal("");
           return; // Don't advance
         }

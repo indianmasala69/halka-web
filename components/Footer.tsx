@@ -18,7 +18,7 @@ const columns = [
       { label: "AI Health Coach", href: "/coach" },
       { label: "Book Consultation", href: "/booking" },
       { label: "Refer a Friend", href: "/referral" },
-      { label: "FAQ", href: "#" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
@@ -27,29 +27,29 @@ const columns = [
       { label: "Terms of Service", href: "/legal/terms" },
       { label: "Privacy Policy", href: "/legal/privacy" },
       { label: "Medical Disclaimer", href: "/legal/disclaimer" },
-      { label: "Refund Policy", href: "#" },
+      { label: "Refund Policy", href: "/legal/terms" },
     ],
   },
   {
     title: "Connect",
     links: [
-      { label: "WhatsApp", href: "#" },
-      { label: "Instagram", href: "#" },
-      { label: "Email", href: "#" },
+      { label: "WhatsApp", href: "https://wa.me/919876543210" },
+      { label: "Instagram", href: "https://instagram.com/halkahealth" },
+      { label: "Email", href: "mailto:hello@halka.health" },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer style={{
+    <footer className="halka-footer" style={{
       background: C.white,
       borderTop: `1px solid ${C.border}`,
       padding: "48px 24px 32px",
     }}>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         {/* Top: logo + columns */}
-        <div style={{
+        <div className="halka-footer-grid" style={{
           display: "grid",
           gridTemplateColumns: "1.5fr repeat(4, 1fr)",
           gap: "32px",
@@ -92,35 +92,41 @@ export default function Footer() {
               }}>
                 {col.title}
               </div>
-              {col.links.map((link, j) => (
-                <a
-                  key={j}
-                  href={link.href}
-                  style={{
-                    display: "block",
-                    fontSize: "13px",
-                    color: C.textMuted,
-                    marginBottom: "10px",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {col.links.map((link, j) => {
+                const isExternal = link.href.startsWith("http") || link.href.startsWith("mailto:");
+                return (
+                  <a
+                    key={j}
+                    href={link.href}
+                    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    style={{
+                      display: "block",
+                      fontSize: "13px",
+                      color: C.textMuted,
+                      padding: "6px 0",
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </div>
           ))}
         </div>
 
         {/* Responsive override for mobile: stack columns */}
         <style>{`
-          @media (max-width: 768px) {
-            footer > div > div:first-child {
+          @media (max-width: 767px) {
+            .halka-footer { padding: 40px 16px 24px !important; }
+            .halka-footer-grid {
               grid-template-columns: 1fr 1fr !important;
+              gap: 24px !important;
             }
           }
           @media (max-width: 480px) {
-            footer > div > div:first-child {
+            .halka-footer-grid {
               grid-template-columns: 1fr !important;
             }
           }

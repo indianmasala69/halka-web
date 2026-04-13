@@ -37,7 +37,14 @@ const items = [
 
 export default function Trust() {
   return (
-    <section style={{ background: C.white, padding: "80px 24px" }}>
+    <section className="halka-trust-section" style={{ background: C.white, padding: "80px 24px" }}>
+      <style>{`
+        @media (max-width: 767px) {
+          .halka-trust-section { padding: 60px 16px !important; }
+          .halka-trust-grid { grid-template-columns: 1fr !important; }
+          .halka-trust-banner-overlay { padding: 0 20px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         {/* Header with image integrated */}
         <div style={{
@@ -82,9 +89,9 @@ export default function Trust() {
         </div>
 
         {/* Trust grid */}
-        <div style={{
+        <div className="halka-trust-grid" style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "16px",
         }}>
           {items.map((item, i) => (
@@ -151,7 +158,7 @@ export default function Trust() {
               display: "block",
             }}
           />
-          <div style={{
+          <div className="halka-trust-banner-overlay" style={{
             position: "absolute" as const,
             inset: 0,
             background: "linear-gradient(to right, rgba(27,43,75,0.85), rgba(27,43,75,0.4))",

@@ -31,12 +31,22 @@ const transformations = [
 
 export default function BeforeAfter() {
   return (
-    <section style={{ background: C.white, padding: "80px 24px" }}>
+    <section className="halka-ba-section" style={{ background: C.white, padding: "80px 24px" }}>
       <style>{`
         @media (min-width: 768px) {
           .halka-ba-grid {
             grid-template-columns: repeat(3, 1fr) !important;
           }
+        }
+        @media (max-width: 767px) {
+          .halka-ba-section { padding: 60px 16px !important; }
+          .halka-ba-grid { max-width: 420px !important; margin: 0 auto !important; }
+          .halka-ba-img { height: 200px !important; }
+          .halka-ba-card-content { padding: 18px 16px !important; }
+        }
+        @media (max-width: 480px) {
+          .halka-ba-img { height: 160px !important; }
+          .halka-ba-section { padding: 48px 12px !important; }
         }
       `}</style>
       <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
@@ -90,6 +100,7 @@ export default function BeforeAfter() {
               }}>
                 <div style={{ flex: 1, position: "relative" }}>
                   <img
+                    className="halka-ba-img"
                     src={t.beforeImg}
                     alt={`${t.name} before`}
                     style={{
@@ -115,6 +126,7 @@ export default function BeforeAfter() {
                 </div>
                 <div style={{ flex: 1, position: "relative" }}>
                   <img
+                    className="halka-ba-img"
                     src={t.afterImg}
                     alt={`${t.name} after`}
                     style={{
@@ -141,7 +153,7 @@ export default function BeforeAfter() {
               </div>
 
               {/* Card content */}
-              <div style={{ padding: "24px" }}>
+              <div className="halka-ba-card-content" style={{ padding: "24px" }}>
                 {/* Program badge */}
                 <span style={{
                   display: "inline-block",

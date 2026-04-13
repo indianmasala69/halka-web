@@ -40,7 +40,19 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section style={{ background: C.bgPrimary, padding: "80px 24px" }}>
+    <section className="halka-testimonials-section" style={{ background: C.bgPrimary, padding: "80px 24px" }}>
+      <style>{`
+        @media (max-width: 767px) {
+          .halka-testimonials-section { padding: 60px 16px !important; }
+          .halka-testimonials-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin: 0 auto !important; }
+        }
+        @media (max-width: 480px) {
+          .halka-testimonials-section { padding: 48px 12px !important; }
+          .halka-testimonial-quote { padding: 16px 18px !important; }
+          .halka-testimonial-top { padding: 16px 18px 14px !important; }
+          .halka-testimonial-bottom { padding: 14px 18px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
@@ -77,9 +89,9 @@ export default function Testimonials() {
         </div>
 
         {/* Cards */}
-        <div style={{
+        <div className="halka-testimonials-grid" style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "24px",
           alignItems: "stretch",
         }}>
@@ -95,7 +107,7 @@ export default function Testimonials() {
               overflow: "hidden",
             }}>
               {/* Top section: Patient info + rating */}
-              <div style={{
+              <div className="halka-testimonial-top" style={{
                 padding: "20px 24px 16px",
                 borderBottom: `1px solid ${C.borderLight}`,
               }}>
@@ -154,7 +166,7 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <div style={{ padding: "20px 24px", flex: 1 }}>
+              <div className="halka-testimonial-quote" style={{ padding: "20px 24px", flex: 1 }}>
                 <p style={{
                   fontSize: "14.5px",
                   color: C.textSecondary,
@@ -166,7 +178,7 @@ export default function Testimonials() {
               </div>
 
               {/* Bottom: Result badges */}
-              <div style={{
+              <div className="halka-testimonial-bottom" style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",

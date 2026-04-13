@@ -35,7 +35,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section style={{ background: C.white, padding: "100px 24px", overflow: "hidden" }}>
+    <section className="hiw-section" style={{ background: C.white, padding: "100px 24px", overflow: "hidden" }}>
       <style>{`
         .hiw-step:hover .hiw-img {
           transform: scale(1.04);
@@ -45,9 +45,16 @@ export default function HowItWorks() {
           box-shadow: 0 12px 40px rgba(0,0,0,0.10) !important;
         }
         @media (max-width: 767px) {
+          .hiw-section { padding: 60px 16px !important; }
           .hiw-grid { grid-template-columns: 1fr !important; max-width: 400px !important; margin: 0 auto !important; }
           .hiw-connector-line { display: none !important; }
           .hiw-mobile-line { display: block !important; }
+          .hiw-step-img { height: 180px !important; }
+          .hiw-step-content { padding: 20px 18px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          .hiw-section { padding: 48px 12px !important; }
+          .hiw-step-img { height: 160px !important; }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
           .hiw-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -146,7 +153,7 @@ export default function HowItWorks() {
                   }}
                 >
                   {/* Image with overlay number */}
-                  <div style={{
+                  <div className="hiw-step-img" style={{
                     position: "relative" as const,
                     overflow: "hidden",
                     height: "200px",
@@ -195,7 +202,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Content */}
-                  <div style={{
+                  <div className="hiw-step-content" style={{
                     padding: "24px 22px 28px",
                     flex: 1,
                     display: "flex",
