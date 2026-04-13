@@ -29,6 +29,8 @@ export default function TheScience() {
           transform: translateY(-4px);
           box-shadow: 0 20px 50px rgba(0,0,0,0.3) !important;
         }
+        .ts-step-card { transition: background 0.3s ease; }
+        .ts-step-card:hover { background: rgba(255,255,255,0.03); border-radius: 20px; }
         .ts-side-toggle:hover { background: rgba(255,255,255,0.06) !important; }
         .ts-step-line {
           position: absolute;
@@ -164,62 +166,57 @@ export default function TheScience() {
 
         {/* ── How GLP-1 Works: 3 steps ── */}
         <div style={{ marginBottom: '56px' }}>
-          <p style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 600,
-            fontSize: '13px',
-            textTransform: 'uppercase' as const,
-            letterSpacing: '2px',
-            color: '#64748B',
-            marginBottom: '28px',
-          }}>
-            How GLP-1 works
-          </p>
-
           <div className="ts-steps" style={{
             display: 'flex',
             alignItems: 'stretch',
-            gap: '16px',
+            gap: '0px',
             position: 'relative',
           }}>
             {[
-              { num: '01', title: 'Reduces appetite', desc: 'Acts on brain receptors to naturally quiet hunger signals and cravings', accent: C.saffron },
-              { num: '02', title: 'Slows digestion', desc: 'Keeps you feeling full longer, reducing overall calorie intake', accent: C.green },
-              { num: '03', title: 'Regulates blood sugar', desc: 'Improves insulin sensitivity, reducing fat storage', accent: C.info },
+              { num: '1', title: 'Reduces appetite', desc: 'Acts on brain receptors to naturally quiet hunger signals', icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z" />
+                  <line x1="9" y1="21" x2="15" y2="21" />
+                </svg>
+              ), gradient: `linear-gradient(135deg, ${C.saffron}, #FF9A5C)`, glow: C.saffron },
+              { num: '2', title: 'Slows digestion', desc: 'Keeps you feeling full longer after meals', icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              ), gradient: `linear-gradient(135deg, ${C.green}, #34D399)`, glow: C.green },
+              { num: '3', title: 'Regulates blood sugar', desc: 'Improves insulin sensitivity, reduces fat storage', icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+              ), gradient: `linear-gradient(135deg, #6366F1, #818CF8)`, glow: '#6366F1' },
             ].map((step, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-                <div style={{
+                <div className="ts-step-card" style={{
                   flex: 1,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '16px',
-                  padding: '28px 24px',
+                  padding: '32px 28px',
                   position: 'relative',
+                  textAlign: 'center' as const,
                 }}>
+                  {/* Glowing icon circle */}
                   <div style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 800,
-                    fontSize: '36px',
-                    color: step.accent,
-                    opacity: 0.2,
-                    position: 'absolute',
-                    top: '16px',
-                    right: '20px',
-                    lineHeight: 1,
+                    width: 64,
+                    height: 64,
+                    borderRadius: '50%',
+                    background: step.gradient,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: C.white,
+                    margin: '0 auto 20px',
+                    boxShadow: `0 8px 32px ${step.glow}40, 0 0 60px ${step.glow}15`,
                   }}>
-                    {step.num}
+                    {step.icon}
                   </div>
-                  <div style={{
-                    width: 4,
-                    height: 32,
-                    borderRadius: 2,
-                    background: step.accent,
-                    marginBottom: '16px',
-                  }} />
                   <h4 style={{
                     fontFamily: "'Outfit', sans-serif",
                     fontWeight: 700,
-                    fontSize: '18px',
+                    fontSize: '20px',
                     color: C.white,
                     marginBottom: '8px',
                   }}>
@@ -227,33 +224,46 @@ export default function TheScience() {
                   </h4>
                   <p style={{
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: '13px',
+                    fontSize: '14px',
                     color: '#94A3B8',
                     lineHeight: 1.6,
                     margin: 0,
+                    maxWidth: '240px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
                   }}>
                     {step.desc}
                   </p>
                 </div>
 
-                {/* Connector arrow */}
+                {/* Connector: thin line with dot */}
                 {i < 2 && (
-                  <svg className="ts-step-connector-h" width="32" height="20" viewBox="0 0 32 20" fill="none" style={{ flexShrink: 0, margin: '0 -4px' }}>
-                    <line x1="2" y1="10" x2="22" y2="10" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeDasharray="4 3" />
-                    <polyline points="20,5 28,10 20,15" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <div className="ts-step-connector-h" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexShrink: 0,
+                    width: '48px',
+                    justifyContent: 'center',
+                  }}>
+                    <div style={{
+                      height: '1px',
+                      flex: 1,
+                      background: 'linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.2), rgba(255,255,255,0.08))',
+                    }} />
+                  </div>
                 )}
                 {/* Vertical connector (mobile) */}
                 {i < 2 && (
                   <div className="ts-step-connector-v" style={{
                     display: 'none',
                     justifyContent: 'center',
-                    padding: '8px 0',
+                    padding: '4px 0',
                   }}>
-                    <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-                      <line x1="10" y1="2" x2="10" y2="16" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeDasharray="4 3" />
-                      <polyline points="5,14 10,22 15,14" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    <div style={{
+                      width: '1px',
+                      height: '32px',
+                      background: 'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.2), rgba(255,255,255,0.08))',
+                    }} />
                   </div>
                 )}
               </div>
